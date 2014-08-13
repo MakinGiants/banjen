@@ -88,14 +88,14 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
 		if (mediaPlayer.isPlaying()) {
 			mediaPlayer.reset();
 		}
-		
+
 		final AssetFileDescriptor afd = context.getAssets().openFd(path);
 
 		mediaPlayer.setDataSource(afd.getFileDescriptor(),
 				afd.getStartOffset(), afd.getLength());
 
 		mediaPlayer.prepareAsync();
-		// mediaPlayer.start();
+
 		afd.close();
 
 	}

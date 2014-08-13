@@ -11,6 +11,8 @@ import android.widget.Button;
 public class EarTuneActivity extends Activity {
 
 	private SoundPlayer player;
+	private String[] tunings = { "sounds/1 - d.mp3", "sounds/2 - b.mp3",
+			"sounds/3 - g.mp3", "sounds/4 - d.mp3" };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +21,7 @@ public class EarTuneActivity extends Activity {
 
 		player = new SoundPlayer(this);
 
+		// Setup listeners
 		((Button) findViewById(R.id.ear_button_1))
 				.setOnClickListener(new OnClickListener() {
 
@@ -26,7 +29,7 @@ public class EarTuneActivity extends Activity {
 					public void onClick(View arg0) {
 
 						try {
-							player.play("sounds/1 - d.mp3");
+							player.play(tunings[0]);
 						} catch (IOException e) {
 							e.printStackTrace();
 						} catch (InterruptedException e) {
@@ -43,7 +46,7 @@ public class EarTuneActivity extends Activity {
 					public void onClick(View arg0) {
 
 						try {
-							player.play("sounds/2 - b.mp3");
+							player.play(tunings[1]);
 						} catch (IOException e) {
 							e.printStackTrace();
 						} catch (InterruptedException e) {
@@ -60,7 +63,7 @@ public class EarTuneActivity extends Activity {
 					public void onClick(View arg0) {
 
 						try {
-							player.play("sounds/3 - g.mp3");
+							player.play(tunings[2]);
 						} catch (IOException e) {
 							e.printStackTrace();
 						} catch (InterruptedException e) {
@@ -77,7 +80,7 @@ public class EarTuneActivity extends Activity {
 					public void onClick(View arg0) {
 
 						try {
-							player.play("sounds/4 - d.mp3");
+							player.play(tunings[3]);
 						} catch (IOException e) {
 							e.printStackTrace();
 						} catch (InterruptedException e) {
