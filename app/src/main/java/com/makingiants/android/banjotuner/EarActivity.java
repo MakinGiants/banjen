@@ -1,4 +1,4 @@
-package com.makingiants.banjotuner;
+package com.makingiants.android.banjotuner;
 
 import android.app.Activity;
 import android.os.Bundle;
