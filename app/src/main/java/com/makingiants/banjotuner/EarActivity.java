@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
@@ -49,9 +48,7 @@ public class EarActivity extends Activity implements OnClickListener {
             @Override
             public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
                 for (int j = 0; j < radioGroup.getChildCount(); j++) {
-                    final LinearLayout father = (LinearLayout) radioGroup.getChildAt(j);
-                    final ToggleButton view = (ToggleButton) father.getChildAt(1);
-
+                    final ToggleButton view = (ToggleButton) radioGroup.getChildAt(j);
                     view.setChecked(view.getId() == i);
                 }
             }
