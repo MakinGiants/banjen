@@ -1,4 +1,4 @@
-package com.makingiants.banjotuner;
+package com.makingiants.android.banjotuner;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
