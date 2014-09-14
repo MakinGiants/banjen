@@ -7,8 +7,13 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- Customize your theme here. -->
+
     </style>
+
+    <style name="EarLayoutTheme" parent="AppBaseTheme">
+        <item name="android:background">#bfc8cf</item>
+    </style>
+
 
     <style name="ButtonText">
         <item name="android:layout_width">fill_parent</item>
