@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">BanjoTuner</string>
+    <string name="app_name">Banjo Tuner</string>
 
     <string name="ads_unit_id_baner" translatable="false">ca-app-pub-1572359805006702/2879261560</string>
     <string name="ear_button_1_text" translatable="false">1 - D</string>

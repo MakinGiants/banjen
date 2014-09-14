@@ -3,14 +3,15 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/ear_vertical_margin"
-    android:layout_marginLeft="@dimen/ear_horizontal_margin"
-    android:layout_marginRight="@dimen/ear_horizontal_margin"
     android:orientation="vertical"
+    style="@style/EarLayoutTheme"
     tools:context="${relativePackage}.${activityClass}">
 
     <RadioGroup
         android:id="@+id/ear_radiogroup_sounds"
+        android:layout_marginTop="@dimen/ear_vertical_margin"
+        android:layout_marginLeft="@dimen/ear_horizontal_margin"
+        android:layout_marginRight="@dimen/ear_horizontal_margin"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="10"

@@ -48,7 +48,8 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
     public void playWithLoop(final String path) throws IOException, InterruptedException {
 
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            stop();
+            //stop();
+            mediaPlayer.release();
         }
 
         mediaPlayer = new MediaPlayer();
@@ -72,20 +73,22 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
      * a cut sound on reset.
      */
     public void stop() {
-        manager.setStreamMute(STREAM_TYPE, true);
+        if(mediaPlayer != null) {
+            manager.setStreamMute(STREAM_TYPE, true);
 
-        // TODO: Find a better way to stop the sound without sleep
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            Log.e(context.getString(R.string.app_name), "stop InterruptedException", e);
+            // TODO: Find a better way to stop the sound without sleep
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                Log.e(context.getString(R.string.app_name), "stop InterruptedException", e);
+            }
+
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+
+            manager.setStreamMute(STREAM_TYPE, false);
         }
-
-        mediaPlayer.stop();
-        mediaPlayer.release();
-        mediaPlayer = null;
-
-        manager.setStreamMute(STREAM_TYPE, false);
     }
 
     // ****************************************************************
