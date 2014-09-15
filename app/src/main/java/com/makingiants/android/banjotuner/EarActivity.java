@@ -2,7 +2,6 @@ package com.makingiants.android.banjotuner;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RadioGroup;
@@ -11,33 +10,31 @@ import android.widget.ToggleButton;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-import java.io.IOException;
-
+//TODO: Manage release of sounds onPause/onResume etc...
 public class EarActivity extends Activity implements OnClickListener {
-    private RadioGroup radioGroupButtons;
 
+    private RadioGroup radioGroupButtons;
     private SoundPlayer player;
-    private String[] tunings = { "sounds/1 - d.mp3", "sounds/2 - b.mp3", "sounds/3 - g.mp3",
-            "sounds/4 - d.mp3" };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ear);
 
-        // Create an ad request. Check logcat output for the hashed device ID to
-        // get test ads on a physical device.
-        //AdRequest adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
-        AdRequest adRequest = new AdRequest.Builder().build();
-
-        // Start loading the ad in the background.
-        ((AdView) findViewById(R.id.ear_ads)).loadAd(adRequest);
+        setListeners();
+        setAds();
 
         player = new SoundPlayer(this);
+    }
 
-        //
-        // Set Listeners
-        //
+    private void setAds() {
+        //AdRequest adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        ((AdView) findViewById(R.id.ear_ads)).loadAd(adRequest);
+    }
+
+    private void setListeners() {
         ((ToggleButton) findViewById(R.id.ear_button_1)).setOnClickListener(this);
         ((ToggleButton) findViewById(R.id.ear_button_2)).setOnClickListener(this);
         ((ToggleButton) findViewById(R.id.ear_button_3)).setOnClickListener(this);
@@ -53,7 +50,6 @@ public class EarActivity extends Activity implements OnClickListener {
                 }
             }
         });
-
     }
 
     @Override
@@ -69,26 +65,16 @@ public class EarActivity extends Activity implements OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        radioGroupButtons.check(v.getId());
-
-        ToggleButton button = (ToggleButton) v;
+    public void onClick(View clickView) {
+        radioGroupButtons.check(clickView.getId());
+        ToggleButton button = (ToggleButton) clickView;
 
         if (button.isChecked()) {
             final int buttonTag = Integer.parseInt(button.getTag().toString());
-
-            try {
-                player.playWithLoop(tunings[buttonTag]);
-            } catch (IOException e) {
-                Log.e(getString(R.string.app_name), "play IOException", e);
-            } catch (InterruptedException e) {
-                Log.e(getString(R.string.app_name), "play InterruptedException", e);
-            }
-
+            player.playWithLoop(buttonTag);
         } else {
             player.stop();
         }
 
     }
-
 }
