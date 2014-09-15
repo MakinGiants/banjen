@@ -21,12 +21,12 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
 
     private final static String SOUNDS_PATH = "b_sounds";
     private final static String[] SOUNDS = {"1 - d.mp3", "2 - b.mp3", "3 - g.mp3", "4 - d.mp3"};
+    private final static int STREAM_TYPE = AudioManager.STREAM_MUSIC;
 
     // ****************************************************************
     // Attributes
     // ****************************************************************
 
-    private final static int STREAM_TYPE = AudioManager.STREAM_MUSIC;
     private MediaPlayer mediaPlayer;
     private AudioManager manager;
     private Context context;

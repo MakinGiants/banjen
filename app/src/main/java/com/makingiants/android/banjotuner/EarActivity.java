@@ -39,6 +39,7 @@ public class EarActivity extends Activity implements OnClickListener {
     @Override
     protected void onPause() {
         radioGroupButtons.clearCheck();
+        player.stop();
 
         super.onPause();
     }
