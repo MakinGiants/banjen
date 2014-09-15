@@ -71,17 +71,14 @@ public class SoundPlayer {
     // ****************************************************************
 
     public void playWithLoop(int soundIndex) {
-        if (lastStream != -1) {
-            soundPool.stop(lastStream);
-            lastStream = -1;
-        }
-
+        stop();
         lastStream = soundPool.play(soundsId[soundIndex], 1f, 1f, 1, -1, 1f);
     }
 
     public void stop() {
         if (lastStream != -1) {
             soundPool.stop(lastStream);
+            lastStream = -1;
         }
     }
 }
