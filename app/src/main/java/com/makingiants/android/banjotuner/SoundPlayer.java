@@ -1,9 +1,11 @@
 package com.makingiants.android.banjotuner;
 
 import android.content.Context;
-import android.content.res.AssetManager;
+import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
-import android.media.SoundPool;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.media.MediaPlayer.OnPreparedListener;
 import android.util.Log;
 
 import java.io.IOException;
@@ -11,74 +13,97 @@ import java.io.IOException;
 /**
  * Sound player for android
  */
-public class SoundPlayer {
+public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
 
     // ****************************************************************
     // Constants
     // ****************************************************************
 
-    private final static int STREAM_TYPE = AudioManager.STREAM_MUSIC;
     private final static String SOUNDS_PATH = "b_sounds";
     private final static String[] SOUNDS = {"1 - d.mp3", "2 - b.mp3", "3 - g.mp3", "4 - d.mp3"};
-
 
     // ****************************************************************
     // Attributes
     // ****************************************************************
 
+    private final static int STREAM_TYPE = AudioManager.STREAM_MUSIC;
+    private MediaPlayer mediaPlayer;
+    private AudioManager manager;
     private Context context;
-    private SoundPool soundPool;
-    private int[] soundsId;
-    private int lastStream;
 
     // ****************************************************************
     // Constructor
     // ****************************************************************
 
     public SoundPlayer(final Context context) {
+
         this.context = context;
-        lastStream = -1;
 
-        loadSoundsId();
-    }
-
-    private void loadSoundsId() {
-        this.soundPool = new SoundPool(1, STREAM_TYPE, 0);
-        this.soundsId = new int[SOUNDS.length];
-
-        AssetManager am = context.getAssets();
-
-        for (int i = 0; i < SOUNDS.length; i++) {
-            try {
-                soundsId[i] = soundPool.load(am.openFd(SOUNDS_PATH + '/' + SOUNDS[i]), 1);
-            } catch (IOException e) {
-                Log.e(context.getString(R.string.app_name), "IOException load asset", e);
-            }
-        }
-    }
-
-    public void release() {
-        for (int i = 0; i < soundsId.length; i++) {
-            soundPool.unload(soundsId[i]);
-        }
-
-        soundsId = null;
-        soundPool.release();
+        manager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
     // ****************************************************************
     // Sound play methods
     // ****************************************************************
 
-    public void playWithLoop(int soundIndex) {
-        stop();
-        lastStream = soundPool.play(soundsId[soundIndex], 1f, 1f, 1, -1, 1f);
+    /**
+     * Play the sound in path and if there are any sound playing it will stop
+     * and play the new one if there are no sounds playing now, else stop the
+     * sound
+     *
+     * @param path file to play
+     * @throws java.io.IOException
+     */
+    public void playWithLoop(int index) throws IOException, InterruptedException {
+
+        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+            stop();
+        }
+
+        String path = SOUNDS_PATH + "/" + SOUNDS[index];
+
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setLooping(true);
+        mediaPlayer.setAudioStreamType(STREAM_TYPE);
+        mediaPlayer.setVolume(1.0f, 1.0f);
+        mediaPlayer.setOnPreparedListener(this);
+        mediaPlayer.setOnCompletionListener(this);
+
+        final AssetFileDescriptor afd = context.getAssets().openFd(path);
+
+        mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+
+        mediaPlayer.prepareAsync();
+
+        afd.close();
     }
 
+    /**
+     * Reset the player with a mute to avoid
+     * a cut sound on reset.
+     */
     public void stop() {
-        if (lastStream != -1) {
-            soundPool.stop(lastStream);
-            lastStream = -1;
+        if (mediaPlayer != null) {
+            manager.setStreamMute(STREAM_TYPE, true);
+
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+
+            manager.setStreamMute(STREAM_TYPE, false);
         }
     }
+
+    // ****************************************************************
+    // OnPreparedListener, OnCompletionListener implements
+    // ****************************************************************
+
+    public void onPrepared(final MediaPlayer player) {
+        mediaPlayer.start();
+    }
+
+    public void onCompletion(final MediaPlayer arg0) {
+        mediaPlayer.reset();
+    }
+
 }

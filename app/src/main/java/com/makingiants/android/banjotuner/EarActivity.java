@@ -10,6 +10,8 @@ import android.widget.ToggleButton;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.io.IOException;
+
 public class EarActivity extends Activity implements OnClickListener {
 
     // ****************************************************************
@@ -31,24 +33,12 @@ public class EarActivity extends Activity implements OnClickListener {
         setListeners();
         setAds();
 
-        initSoundPlayer();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        if (player == null) {
-            initSoundPlayer();
-        }
+        player = new SoundPlayer(this);
     }
 
     @Override
     protected void onPause() {
         radioGroupButtons.clearCheck();
-
-        player.release();
-        player = null;
 
         super.onPause();
     }
@@ -81,10 +71,6 @@ public class EarActivity extends Activity implements OnClickListener {
         });
     }
 
-    private void initSoundPlayer() {
-        player = new SoundPlayer(this);
-    }
-
     // ****************************************************************
     // UI Events
     // ****************************************************************
@@ -95,8 +81,14 @@ public class EarActivity extends Activity implements OnClickListener {
         ToggleButton button = (ToggleButton) clickView;
 
         if (button.isChecked()) {
-            final int buttonTag = Integer.parseInt(button.getTag().toString());
-            player.playWithLoop(buttonTag);
+            int buttonTag = Integer.parseInt(button.getTag().toString());
+            try {
+                player.playWithLoop(buttonTag);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         } else {
             player.stop();
         }
