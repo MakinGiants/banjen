@@ -43,7 +43,7 @@ public class SoundPlayer {
     }
 
     private void loadSoundsId() {
-        this.soundPool = new SoundPool(SOUNDS.length, STREAM_TYPE, 0);
+        this.soundPool = new SoundPool(1, STREAM_TYPE, 0);
         this.soundsId = new int[SOUNDS.length];
 
         AssetManager am = context.getAssets();
@@ -57,12 +57,13 @@ public class SoundPlayer {
         }
     }
 
-    private void releaseSoundsId() {
+    public void release() {
         for (int i = 0; i < soundsId.length; i++) {
             soundPool.unload(soundsId[i]);
         }
 
         soundsId = null;
+        soundPool.release();
     }
 
     // ****************************************************************

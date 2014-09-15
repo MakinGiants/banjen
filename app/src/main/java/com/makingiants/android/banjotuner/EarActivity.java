@@ -10,12 +10,18 @@ import android.widget.ToggleButton;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
-//TODO: Manage release of sounds onPause/onResume etc...
 public class EarActivity extends Activity implements OnClickListener {
+
+    // ****************************************************************
+    // Attributes
+    // ****************************************************************
 
     private RadioGroup radioGroupButtons;
     private SoundPlayer player;
 
+    // ****************************************************************
+    // Activity
+    // ****************************************************************
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +31,31 @@ public class EarActivity extends Activity implements OnClickListener {
         setListeners();
         setAds();
 
-        player = new SoundPlayer(this);
+        initSoundPlayer();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (player == null) {
+            initSoundPlayer();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        radioGroupButtons.clearCheck();
+
+        player.release();
+        player = null;
+
+        super.onPause();
+    }
+
+    // ****************************************************************
+    // Initializer
+    // ****************************************************************
 
     private void setAds() {
         //AdRequest adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
@@ -52,17 +81,13 @@ public class EarActivity extends Activity implements OnClickListener {
         });
     }
 
-    @Override
-    protected void onPause() {
-        player.stop();
-        super.onPause();
+    private void initSoundPlayer() {
+        player = new SoundPlayer(this);
     }
 
-    @Override
-    protected void onDestroy() {
-        player.stop();
-        super.onDestroy();
-    }
+    // ****************************************************************
+    // UI Events
+    // ****************************************************************
 
     @Override
     public void onClick(View clickView) {
