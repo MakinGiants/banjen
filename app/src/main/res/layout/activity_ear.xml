@@ -24,7 +24,7 @@
             android:layout_weight="1"
             android:textOff="@string/ear_button_4_text"
             android:textOn="@string/ear_button_4_text"
-            style="@style/ButtonText"
+            style="@style/EarButton"
             android:tag="3" />
 
         <ToggleButton
@@ -34,7 +34,7 @@
             android:layout_height="fill_parent"
             android:textOff="@string/ear_button_3_text"
             android:textOn="@string/ear_button_3_text"
-            style="@style/ButtonText"
+            style="@style/EarButton"
             android:tag="2" />
 
         <ToggleButton
@@ -44,7 +44,7 @@
             android:layout_height="fill_parent"
             android:textOff="@string/ear_button_2_text"
             android:textOn="@string/ear_button_2_text"
-            style="@style/ButtonText"
+            style="@style/EarButton"
             android:tag="1" />
 
         <ToggleButton
@@ -54,7 +54,7 @@
             android:layout_height="fill_parent"
             android:textOff="@string/ear_button_1_text"
             android:textOn="@string/ear_button_1_text"
-            style="@style/ButtonText"
+            style="@style/EarButton"
             android:tag="0" />
 
     </RadioGroup>

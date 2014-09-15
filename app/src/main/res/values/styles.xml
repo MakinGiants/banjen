@@ -15,7 +15,7 @@
     </style>
 
 
-    <style name="ButtonText">
+    <style name="EarButton">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">#ffffff</item>
@@ -27,7 +27,7 @@
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
-        <item name="android:background">@drawable/btn</item>
+        <item name="android:background">@drawable/ear_btn</item>
     </style>
 
 </resources>
