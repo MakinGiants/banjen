@@ -1,71 +1,78 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    style="@style/EarLayoutTheme"
-    tools:context="${relativePackage}.${activityClass}">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+								xmlns:tools="http://schemas.android.com/tools"
+								xmlns:ads="http://schemas.android.com/apk/res-auto"
+								android:layout_width="fill_parent"
+								android:layout_height="match_parent"
+								style="@style/EarLayoutTheme"
+								tools:context="${relativePackage}.${activityClass}">
 
-    <RadioGroup
-        android:id="@+id/ear_radiogroup_sounds"
-        android:layout_marginTop="@dimen/ear_vertical_margin"
-        android:layout_marginLeft="@dimen/ear_horizontal_margin"
-        android:layout_marginRight="@dimen/ear_horizontal_margin"
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="10"
-        android:orientation="vertical">
+	<include
+		layout="@layout/toolbar"
+		android:id="@+id/ear_toolbar"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_alignParentTop="true" />
 
-        <ToggleButton
-            android:id="@+id/ear_button_4"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:textOff="@string/ear_button_4_text"
-            android:textOn="@string/ear_button_4_text"
-            style="@style/EarButton"
-            android:tag="3" />
+	<RadioGroup
+		android:id="@+id/ear_radiogroup_sounds"
+		android:layout_marginTop="@dimen/ear_vertical_margin"
+		android:layout_marginLeft="@dimen/ear_horizontal_margin"
+		android:layout_marginRight="@dimen/ear_horizontal_margin"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/ear_toolbar"
+		android:layout_weight="10"
+		android:orientation="vertical">
 
-        <ToggleButton
-            android:id="@+id/ear_button_3"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:textOff="@string/ear_button_3_text"
-            android:textOn="@string/ear_button_3_text"
-            style="@style/EarButton"
-            android:tag="2" />
+		<ToggleButton
+			android:id="@+id/ear_button_4"
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/ear_button_height"
+			android:layout_weight="1"
+			android:textOff="@string/ear_button_4_text"
+			android:textOn="@string/ear_button_4_text"
+			style="@style/EarButton"
+			android:tag="3" />
 
-        <ToggleButton
-            android:id="@+id/ear_button_2"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:textOff="@string/ear_button_2_text"
-            android:textOn="@string/ear_button_2_text"
-            style="@style/EarButton"
-            android:tag="1" />
+		<ToggleButton
+			android:id="@+id/ear_button_3"
+			android:layout_weight="1"
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/ear_button_height"
+			android:textOff="@string/ear_button_3_text"
+			android:textOn="@string/ear_button_3_text"
+			style="@style/EarButton"
+			android:tag="2" />
 
-        <ToggleButton
-            android:id="@+id/ear_button_1"
-            android:layout_weight="1"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:textOff="@string/ear_button_1_text"
-            android:textOn="@string/ear_button_1_text"
-            style="@style/EarButton"
-            android:tag="0" />
+		<ToggleButton
+			android:id="@+id/ear_button_2"
+			android:layout_weight="1"
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/ear_button_height"
+			android:textOff="@string/ear_button_2_text"
+			android:textOn="@string/ear_button_2_text"
+			style="@style/EarButton"
+			android:tag="1" />
 
-    </RadioGroup>
+		<ToggleButton
+			android:id="@+id/ear_button_1"
+			android:layout_weight="1"
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/ear_button_height"
+			android:textOff="@string/ear_button_1_text"
+			android:textOn="@string/ear_button_1_text"
+			style="@style/EarButton"
+			android:tag="0" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/ear_ads"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_weight="1"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/ads_unit_id_baner" />
+	</RadioGroup>
 
-</LinearLayout>
+	<com.google.android.gms.ads.AdView
+		android:id="@+id/ear_ads"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:layout_weight="1"
+		ads:adSize="BANNER"
+		ads:adUnitId="@string/ads_unit_id_baner" />
+
+</RelativeLayout>
