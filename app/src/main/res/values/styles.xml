@@ -1,13 +1,9 @@
 <resources>
 
 	<!-- Base application theme. -->
-	<style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
-		<!-- Backward compatibility -->
-		<!--<item name="colorPrimary">@color/primary_dark_material_dark</item>-->
-		<!--<item name="colorPrimaryDark">@color/primary_dark_material_dark</item>-->
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
 	</style>
-
-	<style name="AppTheme" parent="AppBaseTheme"></style>
 
 	<style name="EarLayoutTheme" parent="">
 		<item name="android:background">#ff7e8288</item>
