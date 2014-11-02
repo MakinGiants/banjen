@@ -32,7 +32,7 @@ public class EarActivity extends ActionBarActivity implements OnClickListener {
 		setContentView(R.layout.activity_ear);
 
 		Toolbar toolbar = (Toolbar) findViewById(R.id.ear_toolbar);
-		toolbar.setLogo(R.drawable.t3);
+		toolbar.setLogo(R.drawable.ic_launcher);
 		setSupportActionBar(toolbar);
 
 		setListeners();
