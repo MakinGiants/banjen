@@ -6,7 +6,6 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaPlayer.OnPreparedListener;
-import android.util.Log;
 
 import java.io.IOException;
 
@@ -15,36 +14,32 @@ import java.io.IOException;
  */
 public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
 
-    // ****************************************************************
-    // Constants
-    // ****************************************************************
+    //<editor-fold desc="Constants">
 
     private final static String SOUNDS_PATH = "b_sounds";
     private final static String[] SOUNDS = {"1 - d.mp3", "2 - b.mp3", "3 - g.mp3", "4 - d.mp3"};
     private final static int STREAM_TYPE = AudioManager.STREAM_MUSIC;
 
-    // ****************************************************************
-    // Attributes
-    // ****************************************************************
+    //</editor-fold>
+
+    //<editor-fold desc="Attributes">
 
     private MediaPlayer mediaPlayer;
     private AudioManager manager;
     private Context context;
 
-    // ****************************************************************
-    // Constructor
-    // ****************************************************************
+    //</editor-fold>
+
+    //<editor-fold desc="Constructor">
 
     public SoundPlayer(final Context context) {
-
         this.context = context;
-
-        manager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        this.manager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     }
 
-    // ****************************************************************
-    // Sound play methods
-    // ****************************************************************
+    //</editor-fold>
+
+    //<editor-fold desc="Sound play methods">
 
     /**
      * Play the sound in path and if there are any sound playing it will stop
@@ -94,9 +89,9 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
         }
     }
 
-    // ****************************************************************
-    // OnPreparedListener, OnCompletionListener implements
-    // ****************************************************************
+    //</editor-fold>
+
+    //<editor-fold desc="OnPreparedListener, OnCompletionListener implements">
 
     public void onPrepared(final MediaPlayer player) {
         mediaPlayer.start();
@@ -105,5 +100,7 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
     public void onCompletion(final MediaPlayer arg0) {
         mediaPlayer.reset();
     }
+
+    //</editor-fold>
 
 }
