@@ -15,95 +15,94 @@ import java.io.IOException;
 
 public class EarActivity extends ActionBarActivity implements OnClickListener {
 
-	// ****************************************************************
-	// Attributes
-	// ****************************************************************
+    //<editor-fold desc="Attributes">
 
-	private RadioGroup radioGroupButtons;
-	private SoundPlayer player;
+    private RadioGroup radioGroupButtons;
+    private SoundPlayer player;
 
-	// ****************************************************************
-	// Activity
-	// ****************************************************************
+    //</editor-fold>
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_ear);
+    //<editor-fold desc="Activity Overrides">
 
-		Toolbar toolbar = (Toolbar) findViewById(R.id.ear_toolbar);
-		toolbar.setLogo(R.drawable.ic_launcher);
-		setSupportActionBar(toolbar);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ear);
 
-		setListeners();
-		setAds();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.ear_toolbar);
+        toolbar.setLogo(R.drawable.ic_launcher);
+        setSupportActionBar(toolbar);
 
-		player = new SoundPlayer(this);
-	}
+        setListeners();
+        setAds();
 
-	@Override
-	protected void onPause() {
-		radioGroupButtons.clearCheck();
-		player.stop();
+        player = new SoundPlayer(this);
+    }
 
-		super.onPause();
-	}
+    @Override
+    protected void onPause() {
+        radioGroupButtons.clearCheck();
+        player.stop();
 
-	// ****************************************************************
-	// Initializer
-	// ****************************************************************
+        super.onPause();
+    }
 
-	private void setAds() {
-		AdRequest adRequest;
+    //</editor-fold>
 
-		if (BuildConfig.DEBUG) {
-			adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
-		} else {
-			adRequest = new AdRequest.Builder().build();
-		}
+    //<editor-fold desc="Initializer">
 
-		((AdView) findViewById(R.id.ear_ads)).loadAd(adRequest);
-	}
+    private void setAds() {
+        AdRequest adRequest;
 
-	private void setListeners() {
-		((ToggleButton) findViewById(R.id.ear_button_1)).setOnClickListener(this);
-		((ToggleButton) findViewById(R.id.ear_button_2)).setOnClickListener(this);
-		((ToggleButton) findViewById(R.id.ear_button_3)).setOnClickListener(this);
-		((ToggleButton) findViewById(R.id.ear_button_4)).setOnClickListener(this);
+        if (BuildConfig.DEBUG) {
+            adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
+        } else {
+            adRequest = new AdRequest.Builder().build();
+        }
 
-		radioGroupButtons = ((RadioGroup) findViewById(R.id.ear_radiogroup_sounds));
-		radioGroupButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
-				for (int j = 0; j < radioGroup.getChildCount(); j++) {
-					final ToggleButton view = (ToggleButton) radioGroup.getChildAt(j);
-					view.setChecked(view.getId() == i);
-				}
-			}
-		});
-	}
+        ((AdView) findViewById(R.id.ear_ads)).loadAd(adRequest);
+    }
 
-	// ****************************************************************
-	// UI Events
-	// ****************************************************************
+    private void setListeners() {
+        ((ToggleButton) findViewById(R.id.ear_button_1)).setOnClickListener(this);
+        ((ToggleButton) findViewById(R.id.ear_button_2)).setOnClickListener(this);
+        ((ToggleButton) findViewById(R.id.ear_button_3)).setOnClickListener(this);
+        ((ToggleButton) findViewById(R.id.ear_button_4)).setOnClickListener(this);
 
-	@Override
-	public void onClick(View clickView) {
-		radioGroupButtons.check(clickView.getId());
-		ToggleButton button = (ToggleButton) clickView;
+        radioGroupButtons = ((RadioGroup) findViewById(R.id.ear_radiogroup_sounds));
+        radioGroupButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
+                for (int j = 0; j < radioGroup.getChildCount(); j++) {
+                    final ToggleButton view = (ToggleButton) radioGroup.getChildAt(j);
+                    view.setChecked(view.getId() == i);
+                }
+            }
+        });
+    }
 
-		if (button.isChecked()) {
-			int buttonTag = Integer.parseInt(button.getTag().toString());
-			try {
-				player.playWithLoop(buttonTag);
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		} else {
-			player.stop();
-		}
+    //</editor-fold>
 
-	}
+    //<editor-fold desc="UI Events">
+
+    @Override
+    public void onClick(View clickView) {
+        radioGroupButtons.check(clickView.getId());
+        ToggleButton button = (ToggleButton) clickView;
+
+        if (button.isChecked()) {
+            int buttonTag = Integer.parseInt(button.getTag().toString());
+            try {
+                player.playWithLoop(buttonTag);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } else {
+            player.stop();
+        }
+    }
+
+    //</editor-fold>
 }
