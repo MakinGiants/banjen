@@ -3,8 +3,6 @@ package com.makingiants.android.banjotuner;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
@@ -13,7 +11,10 @@ import com.google.android.gms.ads.AdView;
 
 import java.io.IOException;
 
-public class EarActivity extends ActionBarActivity implements OnClickListener {
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class EarActivity extends ActionBarActivity {
 
     //<editor-fold desc="Attributes">
 
@@ -28,13 +29,32 @@ public class EarActivity extends ActionBarActivity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ear);
+        ButterKnife.inject(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.ear_toolbar);
         toolbar.setLogo(R.drawable.ic_launcher);
         setSupportActionBar(toolbar);
 
-        setListeners();
-        setAds();
+        radioGroupButtons = ((RadioGroup) findViewById(R.id.ear_radiogroup_sounds));
+        radioGroupButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
+                for (int j = 0; j < radioGroup.getChildCount(); j++) {
+                    final ToggleButton view = (ToggleButton) radioGroup.getChildAt(j);
+                    view.setChecked(view.getId() == i);
+                }
+            }
+        });
+
+
+        AdRequest adRequest;
+        if (BuildConfig.DEBUG) {
+            adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
+        } else {
+            adRequest = new AdRequest.Builder().build();
+        }
+
+        ((AdView) findViewById(R.id.ear_ads)).loadAd(adRequest);
 
         player = new SoundPlayer(this);
     }
@@ -49,46 +69,11 @@ public class EarActivity extends ActionBarActivity implements OnClickListener {
 
     //</editor-fold>
 
-    //<editor-fold desc="Initializer">
-
-    private void setAds() {
-        AdRequest adRequest;
-
-        if (BuildConfig.DEBUG) {
-            adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
-        } else {
-            adRequest = new AdRequest.Builder().build();
-        }
-
-        ((AdView) findViewById(R.id.ear_ads)).loadAd(adRequest);
-    }
-
-    private void setListeners() {
-        ((ToggleButton) findViewById(R.id.ear_button_1)).setOnClickListener(this);
-        ((ToggleButton) findViewById(R.id.ear_button_2)).setOnClickListener(this);
-        ((ToggleButton) findViewById(R.id.ear_button_3)).setOnClickListener(this);
-        ((ToggleButton) findViewById(R.id.ear_button_4)).setOnClickListener(this);
-
-        radioGroupButtons = ((RadioGroup) findViewById(R.id.ear_radiogroup_sounds));
-        radioGroupButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
-                for (int j = 0; j < radioGroup.getChildCount(); j++) {
-                    final ToggleButton view = (ToggleButton) radioGroup.getChildAt(j);
-                    view.setChecked(view.getId() == i);
-                }
-            }
-        });
-    }
-
-    //</editor-fold>
-
     //<editor-fold desc="UI Events">
 
-    @Override
-    public void onClick(View clickView) {
-        radioGroupButtons.check(clickView.getId());
-        ToggleButton button = (ToggleButton) clickView;
+    @OnClick({R.id.ear_button_1, R.id.ear_button_2, R.id.ear_button_3, R.id.ear_button_4})
+    public void onEarButtonClick(ToggleButton button) {
+        radioGroupButtons.check(button.getId());
 
         if (button.isChecked()) {
             int buttonTag = Integer.parseInt(button.getTag().toString());
