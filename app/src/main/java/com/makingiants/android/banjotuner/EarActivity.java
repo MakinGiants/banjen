@@ -46,7 +46,6 @@ public class EarActivity extends ActionBarActivity {
             }
         });
 
-
         AdRequest adRequest;
         if (BuildConfig.DEBUG) {
             adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
