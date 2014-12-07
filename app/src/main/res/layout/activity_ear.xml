@@ -21,7 +21,6 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:layout_below="@id/ear_toolbar"
-		android:layout_weight="10"
 		android:orientation="vertical">
 
 		<ToggleButton
@@ -71,7 +70,6 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_alignParentBottom="true"
-		android:layout_weight="1"
 		ads:adSize="BANNER"
 		ads:adUnitId="@string/ads_unit_id_baner" />
 

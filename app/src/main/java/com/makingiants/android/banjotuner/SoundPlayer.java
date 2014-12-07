@@ -46,10 +46,10 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
      * and play the new one if there are no sounds playing now, else stop the
      * sound
      *
-     * @param path file to play
+     * @param index file to play
      * @throws java.io.IOException
      */
-    public void playWithLoop(int index) throws IOException, InterruptedException {
+    public void playWithLoop(int index) throws IOException {
 
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             stop();

@@ -80,8 +80,6 @@ public class EarActivity extends ActionBarActivity {
                 player.playWithLoop(buttonTag);
             } catch (IOException e) {
                 e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
         } else {
             player.stop();
