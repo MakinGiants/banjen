@@ -1,8 +1,10 @@
 package com.makingiants.android.banjotuner;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 

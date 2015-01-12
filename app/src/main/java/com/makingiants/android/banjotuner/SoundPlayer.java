@@ -58,7 +58,6 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
         String path = SOUNDS_PATH + "/" + SOUNDS[index];
 
         mediaPlayer = new MediaPlayer();
-        mediaPlayer.setLooping(true);
         mediaPlayer.setAudioStreamType(STREAM_TYPE);
         mediaPlayer.setVolume(1.0f, 1.0f);
         mediaPlayer.setOnPreparedListener(this);
@@ -69,6 +68,7 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
         mediaPlayer.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
 
         mediaPlayer.prepareAsync();
+        mediaPlayer.setLooping(true);
 
         afd.close();
     }
@@ -82,6 +82,7 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
             manager.setStreamMute(STREAM_TYPE, true);
 
             mediaPlayer.stop();
+            mediaPlayer.reset();
             mediaPlayer.release();
             mediaPlayer = null;
 
@@ -98,7 +99,7 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
     }
 
     public void onCompletion(final MediaPlayer arg0) {
-        mediaPlayer.reset();
+//        mediaPlayer.reset();
     }
 
     //</editor-fold>
