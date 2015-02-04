@@ -1,10 +1,8 @@
 package com.makingiants.android.banjotuner;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
@@ -30,7 +28,22 @@ public class EarActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ear);
+
+        if (BuildConfig.ADS_ENABLED) {
+            setContentView(R.layout.activity_ear_ads);
+
+            AdRequest adRequest;
+            if (BuildConfig.DEBUG) {
+                adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
+            } else {
+                adRequest = new AdRequest.Builder().build();
+            }
+            AdView adView = ((AdView) findViewById(R.id.ear_ads));
+            adView.loadAd(adRequest);
+        } else {
+            setContentView(R.layout.activity_ear);
+        }
+
         ButterKnife.inject(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.ear_toolbar);
@@ -47,15 +60,6 @@ public class EarActivity extends ActionBarActivity {
                 }
             }
         });
-
-        AdRequest adRequest;
-        if (BuildConfig.DEBUG) {
-            adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
-        } else {
-            adRequest = new AdRequest.Builder().build();
-        }
-
-        ((AdView) findViewById(R.id.ear_ads)).loadAd(adRequest);
 
         player = new SoundPlayer(this);
     }
