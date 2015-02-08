@@ -1,34 +1,27 @@
 <resources>
 
-	<!-- Base application theme. -->
-	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-		<item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
         <item name="colorPrimary">@color/primary_material_dark</item>
-	</style>
+    </style>
 
-	<style name="EarLayoutTheme" parent="">
-		<item name="android:background">#ff7e8288</item>
-	</style>
+    <style name="EarLayoutTheme" parent="">
+        <item name="android:background">#ff7e8288</item>
+    </style>
 
-	<style name="EarButton">
-		<item name="android:layout_width">fill_parent</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:textColor">#ffffff</item>
-		<item name="android:gravity">center</item>
-		<item name="android:layout_margin">3dp</item>
-		<item name="android:textSize">30sp</item>
-		<item name="android:textStyle">bold</item>
-		<item name="android:shadowColor">#000000</item>
-		<item name="android:shadowDx">1</item>
-		<item name="android:shadowDy">1</item>
-		<item name="android:shadowRadius">2</item>
-		<item name="android:background">@drawable/ear_btn</item>
-	</style>
-
-	<style name="ToolbarDark" parent="Widget.AppCompat.Toolbar">
-		<item name="android:background">@color/primary_dark_material_dark</item>
-		<item name="popupTheme">@style/ThemeOverlay.AppCompat.Light</item>
-		<item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-	</style>
+    <style name="EarButton">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+        <item name="android:background">@drawable/ear_btn</item>
+    </style>
 
 </resources>
