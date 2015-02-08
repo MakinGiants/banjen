@@ -2,7 +2,8 @@ package com.makingiants.android.banjotuner;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
+import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
@@ -12,13 +13,20 @@ import com.google.android.gms.ads.AdView;
 import java.io.IOException;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
+import butterknife.OnTouch;
 
 public class EarActivity extends ActionBarActivity {
 
     //<editor-fold desc="Attributes">
 
-    private RadioGroup radioGroupButtons;
+    @InjectView(R.id.ear_radiogroup_sounds)
+    RadioGroup radioGroupButtons;
+
+    @InjectView(R.id.ear_layout_main)
+    TouchDrawLayout touchDrawLayout;
+
     private SoundPlayer player;
 
     //</editor-fold>
@@ -46,11 +54,6 @@ public class EarActivity extends ActionBarActivity {
 
         ButterKnife.inject(this);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.ear_toolbar);
-        toolbar.setLogo(R.drawable.ic_launcher);
-        setSupportActionBar(toolbar);
-
-        radioGroupButtons = ((RadioGroup) findViewById(R.id.ear_radiogroup_sounds));
         radioGroupButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
@@ -78,9 +81,11 @@ public class EarActivity extends ActionBarActivity {
 
     @OnClick({R.id.ear_button_1, R.id.ear_button_2, R.id.ear_button_3, R.id.ear_button_4})
     public void onEarButtonClick(ToggleButton button) {
+        touchDrawLayout.setShouldPaintTouchBitmap(false);
         radioGroupButtons.check(button.getId());
 
         if (button.isChecked()) {
+            touchDrawLayout.setShouldPaintTouchBitmap(true);
             int buttonTag = Integer.parseInt(button.getTag().toString());
             try {
                 player.playWithLoop(buttonTag);
@@ -88,9 +93,19 @@ public class EarActivity extends ActionBarActivity {
                 e.printStackTrace();
             }
         } else {
+            touchDrawLayout.setShouldPaintTouchBitmap(false);
             player.stop();
         }
     }
 
+    @OnTouch({R.id.ear_button_1, R.id.ear_button_2, R.id.ear_button_3, R.id.ear_button_4})
+    public boolean OnTouch(Button button, MotionEvent event) {
+        int yDifference = button.getHeight() * (3 - Integer.parseInt(button.getTag().toString()));
+        touchDrawLayout.setTouch(event.getX(), event.getY() + yDifference);
+        return false;
+    }
+
     //</editor-fold>
+
 }
+
