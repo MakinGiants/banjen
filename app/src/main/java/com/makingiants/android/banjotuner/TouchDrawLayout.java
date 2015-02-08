@@ -1,10 +1,13 @@
 package com.makingiants.android.banjotuner;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.widget.RelativeLayout;
 
 /**
@@ -16,8 +19,9 @@ import android.widget.RelativeLayout;
 public class TouchDrawLayout extends RelativeLayout {
 
     private boolean shouldPaintTouchBitmap = false;
-    private Bitmap footprintBitmap;
+    private Bitmap rightFeetBitmap, leftFeetBitmap;
     private float footprintX, footprintY = 100;
+    private float middleScreenVertical;
 
     //<editor-fold desc="Constructors">
 
@@ -38,7 +42,12 @@ public class TouchDrawLayout extends RelativeLayout {
 
     private void init() {
         inflate(getContext(), R.layout.empty_relative_layout, this);
-        footprintBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ear_ic_feet);
+        rightFeetBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ear_ic_right);
+        leftFeetBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ear_ic_left);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        ((Activity) getContext()).getWindowManager().getDefaultDisplay().getMetrics(dm);
+        middleScreenVertical = dm.widthPixels / 2;
     }
 
     //</editor-fold>
@@ -50,7 +59,13 @@ public class TouchDrawLayout extends RelativeLayout {
         super.dispatchDraw(canvas);
 
         if (shouldPaintTouchBitmap) {
-            canvas.drawBitmap(footprintBitmap, footprintX, footprintY, null);
+
+            Log.d("ASD", footprintX + " " + middleScreenVertical);
+            if (footprintX < middleScreenVertical) {
+                canvas.drawBitmap(leftFeetBitmap, footprintX, footprintY, null);
+            } else {
+                canvas.drawBitmap(rightFeetBitmap, footprintX, footprintY, null);
+            }
         }
 
     }
@@ -58,8 +73,8 @@ public class TouchDrawLayout extends RelativeLayout {
     //</editor-fold>
 
     public void setTouch(float x, float y) {
-        this.footprintX = x - (footprintBitmap.getWidth() / 2);
-        this.footprintY = y - (footprintBitmap.getHeight() / 2);
+        this.footprintX = x - (leftFeetBitmap.getWidth() / 2);
+        this.footprintY = y - (leftFeetBitmap.getHeight() / 2);
         invalidate();
     }
 
