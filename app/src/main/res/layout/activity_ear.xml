@@ -1,9 +1,11 @@
-<com.makingiants.android.banjotuner.TouchDrawLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                style="@style/EarLayoutTheme"
-                tools:context="${relativePackage}.${activityClass}">
+<com.makingiants.android.banjotuner.TouchDrawLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ear_layout_main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    style="@style/EarLayoutTheme"
+    tools:context="${relativePackage}.${activityClass}">
 
     <RadioGroup
         android:id="@+id/ear_radiogroup_sounds"

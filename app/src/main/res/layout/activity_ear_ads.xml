@@ -1,9 +1,8 @@
 <com.makingiants.android.banjotuner.TouchDrawLayout
-    android:id="@+id/ear_layout_main"
-    android:clickable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ear_layout_main"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     style="@style/EarLayoutTheme"

@@ -100,8 +100,11 @@ public class EarActivity extends ActionBarActivity {
 
     @OnTouch({R.id.ear_button_1, R.id.ear_button_2, R.id.ear_button_3, R.id.ear_button_4})
     public boolean OnTouch(Button button, MotionEvent event) {
-        int yDifference = button.getHeight() * (3 - Integer.parseInt(button.getTag().toString()));
-        touchDrawLayout.setTouch(event.getX(), event.getY() + yDifference);
+
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            int yDifference = button.getHeight() * (3 - Integer.parseInt(button.getTag().toString()));
+            touchDrawLayout.setTouch(event.getX(), event.getY() + yDifference);
+        }
         return false;
     }
 
