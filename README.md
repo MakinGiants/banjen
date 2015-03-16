@@ -1,5 +1,8 @@
-Android Banjo Tuner
-==================
+# Android Banjo Tuner [![Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.makingiants.android.banjotuner)
+
+<a href="https://play.google.com/store/apps/details?id=com.makingiants.googlelauncher" alt="Blackberry World">
+	<img src="https://dl.dropboxusercontent.com/u/7621584/MakinGiants/banner_banjen.png">
+</a>
 
 Android app to help to tune a 4 string banjo
 
