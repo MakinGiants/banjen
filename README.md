@@ -1,6 +1,6 @@
 # Android Banjo Tuner [![Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.makingiants.android.banjotuner)
 
-<a href="https://play.google.com/store/apps/details?id=com.makingiants.googlelauncher" alt="Blackberry World">
+<a href="https://play.google.com/store/apps/details?id=com.makingiants.android.banjotuner" alt="Blackberry World">
 	<img src="https://dl.dropboxusercontent.com/u/7621584/MakinGiants/banner_banjen.png">
 </a>
 
