@@ -59,8 +59,6 @@ public class TouchDrawLayout extends RelativeLayout {
         super.dispatchDraw(canvas);
 
         if (shouldPaintTouchBitmap) {
-
-            Log.d("ASD", footprintX + " " + middleScreenVertical);
             if (footprintX < middleScreenVertical) {
                 canvas.drawBitmap(leftFeetBitmap, footprintX, footprintY, null);
             } else {
