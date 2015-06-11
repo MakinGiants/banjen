@@ -2,15 +2,19 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
-        <item name="colorPrimary">@color/primary_material_dark</item>
+        <item name="colorPrimaryDark">@color/banjen_primary</item>
+        <item name="colorPrimary">@color/banjen_primary_dark</item>
+        <item name="colorAccent">@color/banjen_accent</item>
+        <item name="colorControlHighlight">@color/banjen_accent</item>
+
+        <item name="android:windowBackground">@color/banjen_background</item>
+        <item name="android:colorBackgroundCacheHint">@color/banjen_background</item>
+
+        <item name="colorButtonNormal">@color/banjen_primary</item>
+
     </style>
 
-    <style name="EarLayoutTheme" parent="">
-        <item name="android:background">#ff7e8288</item>
-    </style>
-
-    <style name="EarButton">
+    <style name="EarButton" parent="Base.Widget.AppCompat.Button.Borderless">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:textColor">#ffffff</item>
@@ -21,7 +25,7 @@
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
         <item name="android:shadowRadius">2</item>
-        <item name="android:background">@drawable/ear_btn</item>
+        <item name="android:drawSelectorOnTop">true</item>
     </style>
 
 </resources>
