@@ -8,7 +8,7 @@ android {
         applicationId "com.makingiants.android.banjotuner"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 9
+        versionCode 10
         versionName "1.0.2"
         buildConfigField "boolean", "ADS_ENABLED", "false"
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
