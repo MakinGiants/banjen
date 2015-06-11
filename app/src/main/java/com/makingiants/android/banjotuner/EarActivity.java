@@ -1,7 +1,7 @@
 package com.makingiants.android.banjotuner;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -17,29 +17,23 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
 
-public class EarActivity extends ActionBarActivity {
+public class EarActivity extends AppCompatActivity {
 
     //<editor-fold desc="Attributes">
-
     @InjectView(R.id.ear_radiogroup_sounds)
     RadioGroup radioGroupButtons;
-
     @InjectView(R.id.ear_layout_main)
     TouchDrawLayout touchDrawLayout;
-
     private SoundPlayer player;
-
     //</editor-fold>
 
     //<editor-fold desc="Activity Overrides">
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (BuildConfig.ADS_ENABLED) {
             setContentView(R.layout.activity_ear_ads);
-
             AdRequest adRequest;
             if (BuildConfig.DEBUG) {
                 adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
@@ -53,7 +47,6 @@ public class EarActivity extends ActionBarActivity {
         }
 
         ButterKnife.inject(this);
-
         radioGroupButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
@@ -71,12 +64,9 @@ public class EarActivity extends ActionBarActivity {
     protected void onPause() {
         radioGroupButtons.clearCheck();
         player.stop();
-
         super.onPause();
     }
-
     //</editor-fold>
-
     //<editor-fold desc="UI Events">
 
     @OnClick({R.id.ear_button_1, R.id.ear_button_2, R.id.ear_button_3, R.id.ear_button_4})
@@ -100,15 +90,12 @@ public class EarActivity extends ActionBarActivity {
 
     @OnTouch({R.id.ear_button_1, R.id.ear_button_2, R.id.ear_button_3, R.id.ear_button_4})
     public boolean OnTouch(Button button, MotionEvent event) {
-
         if (event.getAction() == MotionEvent.ACTION_UP) {
             int yDifference = button.getHeight() * (3 - Integer.parseInt(button.getTag().toString()));
             touchDrawLayout.setTouch(event.getX(), event.getY() + yDifference);
         }
         return false;
     }
-
     //</editor-fold>
-
 }
 
