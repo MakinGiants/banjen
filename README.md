@@ -25,3 +25,6 @@ but will be thoroughly reviewed and discussed.
 + MakinGIANTS
 + http://www.makingiants.com
 + here.makin.giants@gmail.com
+
+
+Thanks to (Faiz Malkani - appsite)[https://github.com/FaizMalkani/appsite]

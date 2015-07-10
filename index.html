@@ -1,70 +1,168 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Android banjo tuner by MakinGiants</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  </head>
-  <body>
-    <section class="page-header">
-      <h1 class="project-name">Android banjo tuner</h1>
-      <h2 class="project-tagline">Android app to help to tune a banjo</h2>
-      <a href="https://github.com/MakinGiants/android_banjo_tuner" class="btn">View on GitHub</a>
-      <a href="https://github.com/MakinGiants/android_banjo_tuner/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/MakinGiants/android_banjo_tuner/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+<html>
+	<head>
+		<!-- CHANGE TITLE AND META ACCORDINGLY -->
+		<title>Banjen - Banjo tunner </title>
+		<meta name="description" content="Tune in an old-fashion way your Brazilian banjo or cavaquinho with true sounds!">
+		<meta name="keywords" content="Banjo, Cavaco, Cavaquinho, Tunner, Afinador">
+		<meta name="copyright" content="Copyright © 2015 MakinGIANTS. All Rights Reserved.">
+		<meta name="author" content="Daniel Gomez Rico">
 
-    <section class="main-content">
-      <h1>
-<a id="android-banjo-tuner-" class="anchor" href="#android-banjo-tuner-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Android Banjo Tuner <a href="https://play.google.com/store/apps/details?id=com.makingiants.android.banjotuner"><img src="http://developer.android.com/images/brand/en_generic_rgb_wo_45.png" alt="Google Play"></a>
-</h1>
+		<meta name="theme-color" content="#ffffff">
+		<meta content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes" name="viewport">
+		<link rel="stylesheet" href="css/tidy.css">
+		<link rel="stylesheet" href="css/animate.css">
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
+		<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
+		<link rel="import" href="bower_components/paper-fab/paper-fab.html">
+		<link rel="import" href="bower_components/core-icons/core-icons.html">
+	</head>
+	<body>
+	
+		<div class="container" style="width: 100%">
+			<!-- COVER IMAGE AND FLOATING BUTTON -->
+			<div class="cover-image"></div>	
+			<div style="height: 50%; width: 100%; position: absolute; top: 0">
+				<!-- REPLACE WITH YOUR APP URL -->
+     			<a href="https://play.google.com/store/apps/details?id=com.makingiants.android.banjotuner">
+     				<paper-fab class="wow fadeInUp desktop-fab" icon="shop"></paper-fab>
+     			</a>
+			</div>
+			
+			<!-- ICON, NAME AND DESCRIPTION -->
+			<div class="wow fadeInUp content-card">
+				<!-- REPLACE WITH YOUR APP URL -->
+				<a href="https://play.google.com/store/apps/details?id=com.makingiants.android.banjotuner">
+					<paper-fab class="mobile-fab" icon="shop"></paper-fab>
+				</a>
+				
+				<div class="icon-and-title-flex">
+					<img src="img/ic_launcher.png" class="appicon"></img>
+					<div class="title-container">
+						<span class="text-title">Banjen</span>
+						<br><div class="intertext-padding"></div>
+						<span class="text-subtitle">MakinGIANTS</span>
+						<br><div class="intertext-padding"></div>
+						<span class="text-description">Free</span>
+					</div>	
+				</div><br><br><br>
+				<!-- REPLACE WITH YOUR APP DESCRIPTION -->
+				<span class="text-description">Tune your Brazilian banjo or cavaquinho with the actual sounds of the instrument!
 
-<p><a href="https://play.google.com/store/apps/details?id=com.makingiants.android.banjotuner" alt="Blackberry World">
-    <img src="https://dl.dropboxusercontent.com/u/7621584/MakinGiants/banner_banjen.png">
-</a></p>
+The automatic tuners are cool for concerts and on the stage but what about at home... Don´t you wish to have your ears trained in an old-fashioned way?
+It´s simple and easy with this vintage tuner.
 
-<p>Android app to help to tune a 4 string banjo</p>
+Like brazilians say, let´s make the cavaco cry. ¨mandei meu cavaco chorar¨
 
-<p>Developed with Android Studio v0.8.9</p>
+Just try it!
 
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
-
-<ul>
-<li><a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Version 2.0</a></li>
-</ul>
-
-<h2>
-<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
-
-<p>Please fork this repository and contribute back using pull requests.</p>
-
-<p>Any contributions, large or small, major features, bug fixes, additional
-language translations, unit/integration tests are welcomed and appreciated
-but will be thoroughly reviewed and discussed.</p>
-
-<h2>
-<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h2>
-
-<ul>
-<li>MakinGIANTS</li>
-<li><a href="http://www.makingiants.com">http://www.makingiants.com</a></li>
-<li><a href="mailto:here.makin.giants@gmail.com">here.makin.giants@gmail.com</a></li>
-</ul>
-
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/MakinGiants/android_banjo_tuner">Android banjo tuner</a> is maintained by <a href="https://github.com/MakinGiants">MakinGiants</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
-  </body>
-</html>
-
+Like it? Dislike ads? get the free ads / donation version!		
+			</div>
+			
+			<!-- OTHER APPS BY YOU 
+			<div class="wow fadeInUp content-works">
+			<br>
+			<!-- REPLACE WITH YOUR DEV NAME 
+     		<span class="text-subtitle padtopandbottom">Other Apps by MakinGIANTS</span>
+			<br>
+     		<!-- If needed, delete from here 
+			<div class="works-card">
+     			<a href="">
+     				<div class="works-subcard">
+     					<img class="top-corners-rounded" src="img/otherapps/tellit.png" style="width: 100%"></img>
+     					<span class="work-title">App Name</span> 
+     					<paper-ripple fit></paper-ripple>
+     				</div>
+     			</a>		
+     		</div>
+			<!-- To here-->
+			
+     	</div><br><br>
+		
+		
+		<!-- APP DETAILS -->
+		<div class="wow fadeInUp content-card" style="margin-top: 0;">
+     		<span class="text-subtitle">Details</span>
+			<br><br><br>
+			<div>
+				<!-- REPLACE WITH YOUR APP DETAILS ACCORDINGLY -->
+				<div class="detail-item">
+					<core-icon class="details-icon" icon="turned-in"></core-icon>
+					<span class="text-description">Music and Audio</span>
+				</div>
+				<div class="detail-item">
+					<core-icon class="details-icon" icon="star"></core-icon>
+					<span class="text-description">Average Rating 4.54</span>
+				</div>
+				<div class="detail-item">
+					<core-icon class="details-icon" icon="info"></core-icon>
+					<span class="text-description">Version 1.0.2<span>
+				</div>
+				<div class="detail-item">
+					<core-icon class="details-icon" icon="mail"></core-icon>
+					<span class="text-description">danielgomezrico@gmail.com</span>
+				</div>
+				<div class="detail-item">
+					<core-icon class="details-icon" icon="android"></core-icon>
+					<span class="text-description">Android 4.0.3+</span>
+				</div>
+				<div class="detail-item">
+					<core-icon class="details-icon" icon="assessment"></core-icon>
+					<span class="text-description">10,000+ downloads</span>
+				</div>
+			</div>	
+     	</div>
+		
+		<!-- SPACE BELOW DETAILS -->	
+		<div class="empty-space">
+			<div class="meta-container">
+				<div class="wow fadeInUp detail-item watermark">
+						<core-icon class="details-icon" icon="polymer"></core-icon>
+				</div>
+				<div class="wow fadeInUp detail-item watermark credits">
+						<span class="text-description lightgray credits-text">Template by <a href="http://faizmalkani.com">Faiz Malkani</a></span>
+				</div>
+			</div>	
+		</div>
+			
+			
+			
+			
+			
+		<!-- ===================================================================================================== -->
+			
+		<!-- JAVASCRIPT -->
+		
+		<!-- Animations -->
+		<script src="js/wow.min.js"></script>
+		<script>
+			new WOW().init();
+		</script>
+		
+		<!-- Scrollwheel Smoothing -->
+		<script>
+			$(function()
+			{	
+				var $window = $(window);
+				var scrollTime = 0.5;
+				var scrollDistance = 270;
+				$window.on("mousewheel DOMMouseScroll", function(event)
+				{
+	
+					event.preventDefault();	
+					var delta = event.originalEvent.wheelDelta/120 || -event.originalEvent.detail/3;
+					var scrollTop = $window.scrollTop();
+					var finalScroll = scrollTop - parseInt(delta*scrollDistance);
+					TweenMax.to($window, scrollTime, 
+					{
+						scrollTo : { y: finalScroll, autoKill:true }, ease: Power1.easeOut, overwrite: 5	 
+						
+					});
+				});
+			});
+		</script>
+	</body>
+</html>	
