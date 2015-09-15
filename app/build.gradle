@@ -36,13 +36,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            buildConfigField "boolean", "ADS_ENABLED", "true"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        release_paid {
-            minifyEnabled true
-            shrinkResources true
-            applicationIdSuffix '.donation'
         }
     }
 
