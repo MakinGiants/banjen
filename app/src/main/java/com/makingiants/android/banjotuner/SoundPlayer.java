@@ -81,6 +81,7 @@ public class SoundPlayer implements OnPreparedListener, OnCompletionListener {
         if (mediaPlayer != null) {
             manager.setStreamMute(STREAM_TYPE, true);
 
+
             mediaPlayer.stop();
             mediaPlayer.reset();
             mediaPlayer.release();
