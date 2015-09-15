@@ -24,6 +24,7 @@ public class EarActivity extends AppCompatActivity {
     RadioGroup radioGroupButtons;
     @InjectView(R.id.ear_layout_main)
     TouchDrawLayout touchDrawLayout;
+
     private SoundPlayer player;
     //</editor-fold>
 
@@ -88,6 +89,7 @@ public class EarActivity extends AppCompatActivity {
         }
     }
 
+    // Draw the hand on touch
     @OnTouch({R.id.ear_button_1, R.id.ear_button_2, R.id.ear_button_3, R.id.ear_button_4})
     public boolean OnTouch(Button button, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
