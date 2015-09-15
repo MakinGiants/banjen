@@ -7,23 +7,26 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.io.IOException;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+import io.fabric.sdk.android.Fabric;
 
 public class EarActivity extends AppCompatActivity {
 
     //<editor-fold desc="Attributes">
-    @InjectView(R.id.ear_radiogroup_sounds)
+    @Bind(R.id.ear_radiogroup_sounds)
     RadioGroup radioGroupButtons;
-    @InjectView(R.id.ear_layout_main)
+    @Bind(R.id.ear_layout_main)
     TouchDrawLayout touchDrawLayout;
+
     private SoundPlayer player;
     //</editor-fold>
 
@@ -31,6 +34,7 @@ public class EarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
 
         if (BuildConfig.ADS_ENABLED) {
             setContentView(R.layout.activity_ear_ads);
@@ -46,7 +50,7 @@ public class EarActivity extends AppCompatActivity {
             setContentView(R.layout.activity_ear);
         }
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         radioGroupButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
@@ -88,6 +92,7 @@ public class EarActivity extends AppCompatActivity {
         }
     }
 
+    // Draw the hand on touch
     @OnTouch({R.id.ear_button_1, R.id.ear_button_2, R.id.ear_button_3, R.id.ear_button_4})
     public boolean OnTouch(Button button, MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_UP) {
