@@ -23,7 +23,7 @@ android {
         applicationId "com.makingiants.android.banjotuner"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 0
+        versionCode 11
         versionName "1.0.2.1"
         buildConfigField "boolean", "ADS_ENABLED", "false"
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -36,13 +36,7 @@ android {
         release {
             minifyEnabled true
             shrinkResources true
-            buildConfigField "boolean", "ADS_ENABLED", "true"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        release_paid {
-            minifyEnabled true
-            shrinkResources true
-            applicationIdSuffix '.donation'
         }
     }
 

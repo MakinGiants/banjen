@@ -1,9 +1,10 @@
 <com.makingiants.android.banjotuner.TouchDrawLayout
     android:id="@+id/ear_layout_main"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     tools:context="${relativePackage}.${activityClass}">
 
     <RadioGroup
@@ -54,5 +55,13 @@
             android:textOn="@string/ear_button_1_text"/>
 
     </RadioGroup>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/ear_ads"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/ads_unit_id_baner"/>
 
 </com.makingiants.android.banjotuner.TouchDrawLayout>
