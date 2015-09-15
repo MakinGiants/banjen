@@ -12,17 +12,17 @@ import com.google.android.gms.ads.AdView;
 
 import java.io.IOException;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnTouch;
 
 public class EarActivity extends AppCompatActivity {
 
     //<editor-fold desc="Attributes">
-    @InjectView(R.id.ear_radiogroup_sounds)
+    @Bind(R.id.ear_radiogroup_sounds)
     RadioGroup radioGroupButtons;
-    @InjectView(R.id.ear_layout_main)
+    @Bind(R.id.ear_layout_main)
     TouchDrawLayout touchDrawLayout;
 
     private SoundPlayer player;
@@ -47,7 +47,7 @@ public class EarActivity extends AppCompatActivity {
             setContentView(R.layout.activity_ear);
         }
 
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
         radioGroupButtons.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final RadioGroup radioGroup, final int i) {
