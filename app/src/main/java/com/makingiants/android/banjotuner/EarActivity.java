@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.ToggleButton;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -16,6 +17,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTouch;
+import io.fabric.sdk.android.Fabric;
 
 public class EarActivity extends AppCompatActivity {
 
@@ -32,6 +34,7 @@ public class EarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
 
         if (BuildConfig.ADS_ENABLED) {
             setContentView(R.layout.activity_ear_ads);
