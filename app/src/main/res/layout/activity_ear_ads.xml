@@ -62,6 +62,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/ads_unit_id_baner"/>
+        ads:adUnitId="@string/ads_unit_id_banner"/>
 
 </com.makingiants.android.banjotuner.TouchDrawLayout>
