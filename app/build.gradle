@@ -1,60 +1,62 @@
 buildscript {
-    repositories {
-        maven { url 'https://maven.fabric.io/public' }
-    }
+  repositories {
+    jcenter() // gradle-versions-plugin
+    maven { url 'https://maven.fabric.io/public' }
+  }
 
-    dependencies {
-        classpath 'io.fabric.tools:gradle:1.19.2'
-    }
+  dependencies {
+    classpath 'io.fabric.tools:gradle:1.21.2'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
+  }
 }
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'com.github.ben-manes.versions'
 
 repositories {
-    maven { url 'https://maven.fabric.io/public' }
+  maven { url 'https://maven.fabric.io/public' }
 }
 
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+  compileSdkVersion 23
+  buildToolsVersion "23.0.2"
 
-    defaultConfig {
-        applicationId "com.makingiants.android.banjotuner"
-        minSdkVersion 14
-        targetSdkVersion 23
-        versionCode 0
-        versionName "1.0.2.1"
-        buildConfigField "boolean", "ADS_ENABLED", "false"
-        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+  defaultConfig {
+    applicationId "com.makingiants.android.banjotuner"
+    minSdkVersion 14
+    targetSdkVersion 23
+    versionCode 11
+    versionName "1.0.2.2"
+
+    resValue "string", "ads_unit_id_banner", "${ADS_UNIT_ID_BANNER}"
+
+    proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+  }
+  buildTypes {
+    debug {
+      minifyEnabled false
+      shrinkResources false
     }
-    buildTypes {
-        debug {
-            minifyEnabled false
-            shrinkResources false
-        }
-        release {
-            minifyEnabled true
-            shrinkResources true
-            buildConfigField "boolean", "ADS_ENABLED", "true"
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-        release_paid {
-            minifyEnabled true
-            shrinkResources true
-            applicationIdSuffix '.donation'
-        }
+    release {
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
     }
+  }
+}
 
-
+ext {
+  supportLibVersion = "23.1.1"
+  playServicesVersion = "8.4.0"
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:support-annotations:23.0.1'
-    compile 'com.google.android.gms:play-services-ads:7.8.0'
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile "com.android.support:appcompat-v7:${supportLibVersion}"
+  compile "com.android.support:support-annotations:${supportLibVersion}"
+  compile "com.google.android.gms:play-services-ads:${playServicesVersion}"
 
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') { transitive = true; }
+  compile 'com.jakewharton:butterknife:7.0.1'
+  compile('com.crashlytics.sdk.android:crashlytics:2.5.5@aar') { transitive = true; }
 }
