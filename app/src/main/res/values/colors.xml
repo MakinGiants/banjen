@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="banjen_primary">@color/primary_material_dark</color>
-    <color name="banjen_primary_dark">@color/primary_dark_material_dark</color>
-    <color name="banjen_accent">#ffa38251</color>
-    <color name="banjen_background">@color/banjen_primary</color>
+  <color name="banjen_primary">@color/primary_material_dark</color>
+  <color name="banjen_primary_dark">@color/primary_dark_material_dark</color>
+  <color name="banjen_accent">#ffa38251</color>
+  <color name="banjen_background">@color/banjen_primary</color>
 </resources>
