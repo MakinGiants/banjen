@@ -32,7 +32,10 @@ public class EarActivity extends AppCompatActivity {
 
     AdRequest adRequest;
     if (BuildConfig.DEBUG) {
-      adRequest = new AdRequest.Builder().addTestDevice("027c6ee5571a8376").build();
+      adRequest = new AdRequest.Builder()
+          .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+          .addTestDevice("027c6ee5571a8376")
+          .build();
     } else {
       adRequest = new AdRequest.Builder().build();
     }
