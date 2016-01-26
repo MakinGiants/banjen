@@ -1,9 +1,7 @@
 package com.makingiants.android.banjotuner;
 
 import android.app.Application;
-
 import com.crashlytics.android.Crashlytics;
-
 import io.fabric.sdk.android.Fabric;
 
 /**
@@ -11,9 +9,9 @@ import io.fabric.sdk.android.Fabric;
  */
 public class BanjenApplication extends Application {
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Fabric.with(this, new Crashlytics());
-    }
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    Fabric.with(this, new Crashlytics());
+  }
 }
