@@ -26,8 +26,8 @@ android {
     applicationId "com.makingiants.android.banjotuner"
     minSdkVersion 14
     targetSdkVersion 23
-    versionCode 11
-    versionName "1.0.2.2"
+    versionCode 12
+    versionName "1.0.2.3"
 
     resValue "string", "ads_unit_id_banner", "${ADS_UNIT_ID_BANNER}"
 
@@ -36,12 +36,12 @@ android {
   buildTypes {
     debug {
       minifyEnabled false
-      shrinkResources false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
     release {
       minifyEnabled true
-      shrinkResources true
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      shrinkResources false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
 }
