@@ -4,7 +4,7 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="fill_parent"
   android:layout_height="match_parent"
-  tools:context="${relativePackage}.${activityClass}">
+  tools:context=".EarActivity">
 
   <RadioGroup
     android:id="@+id/ear_radiogroup_sounds"
