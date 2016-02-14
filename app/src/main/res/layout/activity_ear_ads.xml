@@ -1,20 +1,20 @@
-<com.makingiants.android.banjotuner.TouchDrawLayout android:id="@+id/ear_layout_main"
+<com.makingiants.android.banjotuner.TouchDrawLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:ads="http://schemas.android.com/apk/res-auto"
-  xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/mainLayout"
   android:layout_width="fill_parent"
   android:layout_height="match_parent"
   tools:context=".EarActivity">
 
   <RadioGroup
-    android:id="@+id/ear_radiogroup_sounds"
+    android:id="@+id/soundsRadioGroup"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_centerInParent="true"
     android:orientation="vertical">
 
     <ToggleButton
-      android:id="@+id/ear_button_4"
+      android:id="@+id/ear4Button"
       style="@style/EarButton"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
@@ -24,7 +24,7 @@
       android:textOn="@string/ear_button_4_text" />
 
     <ToggleButton
-      android:id="@+id/ear_button_3"
+      android:id="@+id/ear3Button"
       style="@style/EarButton"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
@@ -34,7 +34,7 @@
       android:textOn="@string/ear_button_3_text" />
 
     <ToggleButton
-      android:id="@+id/ear_button_2"
+      android:id="@+id/ear2Button"
       style="@style/EarButton"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
@@ -44,7 +44,7 @@
       android:textOn="@string/ear_button_2_text" />
 
     <ToggleButton
-      android:id="@+id/ear_button_1"
+      android:id="@+id/ear1Button"
       style="@style/EarButton"
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"
@@ -56,7 +56,7 @@
   </RadioGroup>
 
   <com.google.android.gms.ads.AdView
-    android:id="@+id/ear_ads"
+    android:id="@+id/adsView"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
