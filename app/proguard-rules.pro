@@ -3,8 +3,16 @@
 -dontwarn butterknife.internal.**
 -keep class **$$ViewBinder { *; }
 -keepclasseswithmembernames class * { @butterknife.* <fields>; }
--keepclasseswithmembernames class * { @butterknife.* <methods>;}
+-keepclasseswithmembernames class * { @butterknife.* <methods>; }
 
-# Android GCM
--keep public class com.google.android.gms.**
--dontwarn com.google.android.gms.**
+# Crashlytics
+-keep class com.crashlytics.** { *; }
+-keep class com.crashlytics.android.**
+-keepattributes SourceFile,LineNumberTable,*Annotation*
+
+# Adsense
+-keep public class com.google.android.gms.ads.** { public *; }
+-keep public class com.google.ads.** { public *; }
+
+# Kotlin
+-dontwarn kotlin.**
