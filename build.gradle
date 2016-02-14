@@ -4,7 +4,7 @@ buildscript {
               playServices: "8.4.0"]
 
   ext.setup = [targetSdk : 23,
-               minSdk    : 15,
+               minSdk    : 14,
                buildTools: "23.0.2"]
 
   repositories {
