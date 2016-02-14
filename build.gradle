@@ -1,14 +1,17 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-
 buildscript {
+  ext.deps = [kotlin      : "1.0.0-rc-1036",
+              supportLib  : "23.1.1",
+              playServices: "8.4.0"]
+
+  ext.setup = [targetSdk : 23,
+               minSdk    : 15,
+               buildTools: "23.0.2"]
+
   repositories {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.0.0-alpha7'
-
-    // NOTE: Do not place your application dependencies here; they belong
-    // in the individual module build.gradle files
+    classpath 'com.android.tools.build:gradle:2.0.0-beta4'
   }
 }
 
