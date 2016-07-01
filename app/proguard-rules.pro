@@ -1,3 +1,7 @@
+-optimizations code/simplification/arithmetic,!code/simplification/cast,!field/*,!class/merging/*
+-optimizationpasses 5
+-allowaccessmodification
+
 # Butterknife
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
