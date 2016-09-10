@@ -53,8 +53,6 @@ class EarActivity : AppCompatActivity(), View.OnClickListener, View.OnTouchListe
         super.onPause()
     }
 
-    //</editor-fold>
-    //<editor-fold desc="UI Events">
     override fun onClick(view: View?) {
         val button = view as ToggleButton
         soundsRadioGroup.check(button.id)
@@ -85,6 +83,5 @@ class EarActivity : AppCompatActivity(), View.OnClickListener, View.OnTouchListe
         }
         return false
     }
-    //</editor-fold>
 }
 

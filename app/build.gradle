@@ -6,7 +6,7 @@ buildscript {
 
   dependencies {
     classpath 'io.fabric.tools:gradle:1.21.7'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.12.0'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$deps.kotlin"
     classpath "org.jetbrains.kotlin:kotlin-android-extensions:$deps.kotlin"
   }
@@ -27,10 +27,10 @@ android {
 
   signingConfigs {
     release {
-      storeFile file(BANEJEN_SIGN_PATH)
-      storePassword BANEJEN_SIGN_PWD
-      keyAlias BANEJEN_SIGN_ALIAS
-      keyPassword BANEJEN_SIGN_PWD
+      storeFile file(BANJEN_SIGN_PATH)
+      storePassword BANJEN_SIGN_PWD
+      keyAlias BANJEN_SIGN_ALIAS
+      keyPassword BANJEN_SIGN_PWD
     }
   }
 
@@ -84,6 +84,5 @@ dependencies {
 
   compile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
 
-  compile('com.crashlytics.sdk.android:crashlytics:2.5.7@aar') { transitive = true; }
-  compile 'com.google.android.gms:play-services-ads:9.2.0'
+  compile('com.crashlytics.sdk.android:crashlytics:2.6.2@aar') { transitive = true; }
 }
