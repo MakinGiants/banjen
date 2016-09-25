@@ -1,3 +1,6 @@
+# 1.4.1
+- Update dependencies
+
 # 1.4.0
 - Update dependencies
 - Recude apk size removing uneeded files 

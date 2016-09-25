@@ -18,8 +18,8 @@ apply plugin: 'io.fabric'
 apply plugin: 'com.github.ben-manes.versions'
 
 def appId = "com.makingiants.android.banjotuner"
-def appVersionName = "1.4.0"
-def appVersionCode = 15
+def appVersionName = "1.4.1"
+def appVersionCode = 16
 
 android {
   compileSdkVersion setup.targetSdk
@@ -84,5 +84,5 @@ dependencies {
 
   compile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
 
-  compile('com.crashlytics.sdk.android:crashlytics:2.6.2@aar') { transitive = true; }
+  compile('com.crashlytics.sdk.android:crashlytics:2.6.4@aar') { transitive = true; }
 }
