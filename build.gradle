@@ -1,17 +1,19 @@
 buildscript {
-  ext.deps = [kotlin      : "1.0.4",
-              supportLib  : "24.2.1",
-              playServices: "9.6.0"]
+  ext.deps = [kotlin      : "1.0.5",
+              supportLib  : "25.0.0",
+              playServices: "9.8.0"]
 
-  ext.setup = [targetSdk : 24,
+  ext.setup = [targetSdk : 25,
                minSdk    : 14,
-               buildTools: "24.0.2"]
+               buildTools: "25.0.0"]
 
   repositories {
     jcenter()
+    maven { url "https://plugins.gradle.org/m2/" }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.0'
+    classpath 'com.android.tools.build:gradle:2.2.2'
+    classpath "com.gradle:build-scan-plugin:1.2"
   }
 }
 
@@ -19,4 +21,11 @@ allprojects {
   repositories {
     jcenter()
   }
+}
+
+
+apply plugin: "com.gradle.build-scan"
+buildScan {
+  licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+  licenseAgree = 'yes'
 }
