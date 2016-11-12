@@ -11,7 +11,7 @@ import android.media.MediaPlayer.OnPreparedListener
  */
 class SoundPlayer(private val context: Context) : OnPreparedListener, OnCompletionListener {
   private var mediaPlayer: MediaPlayer? = null
-  private val manager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+  private val audioManager = context.getSystemService(Context.AUDIO_SERVICE) as AudioManager
   private val soundsPath = "b_sounds"
   private val sounds = arrayOf("1.mp3", "2.mp3", "3.mp3", "4.mp3")
 
@@ -51,7 +51,7 @@ class SoundPlayer(private val context: Context) : OnPreparedListener, OnCompleti
    * a cut sound on reset.
    */
   fun stop() {
-    manager.setStreamMute(AudioManager.STREAM_MUSIC, true)
+    audioManager.setStreamMute(AudioManager.STREAM_MUSIC, true)
 
     mediaPlayer?.apply {
       stop()
@@ -60,7 +60,7 @@ class SoundPlayer(private val context: Context) : OnPreparedListener, OnCompleti
     }
 
     mediaPlayer = null
-    manager.setStreamMute(AudioManager.STREAM_MUSIC, false)
+    audioManager.setStreamMute(AudioManager.STREAM_MUSIC, false)
   }
 
   //<editor-fold desc="OnPreparedListener, OnCompletionListener implements">
