@@ -18,8 +18,8 @@ apply plugin: 'io.fabric'
 apply plugin: 'com.github.ben-manes.versions'
 
 def appId = "com.makingiants.android.banjotuner"
-def appVersionName = "1.4.1"
-def appVersionCode = 16
+def appVersionName = "1.4.2"
+def appVersionCode = 18
 
 android {
   compileSdkVersion setup.targetSdk
@@ -79,7 +79,6 @@ repositories {
 
 dependencies {
   compile "com.android.support:appcompat-v7:${deps.supportLib}"
-  compile "com.android.support:support-annotations:${deps.supportLib}"
   compile "com.google.android.gms:play-services-ads:${deps.playServices}"
 
   compile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
