@@ -1,6 +1,7 @@
 buildscript {
   repositories {
     jcenter() // gradle-versions-plugin
+    mavenCentral()
     maven { url 'https://maven.fabric.io/public' }
   }
 
@@ -9,13 +10,16 @@ buildscript {
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$deps.kotlin"
     classpath "org.jetbrains.kotlin:kotlin-android-extensions:$deps.kotlin"
+    classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
   }
 }
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'spoon'
 
 def appId = "com.makingiants.android.banjotuner"
 def appVersionName = "1.4.2"
@@ -44,10 +48,9 @@ android {
     // Enable just English configs for dependencies, allowing to shrink apk size more
     resConfigs "en", "pt"
 
-    // Add version and build number to apk name
-    archivesBaseName = "banjen-${appVersionName}-${appVersionCode}"
-
     resValue "string", "ads_unit_id_banner", "$BANJEN_ADS_UNIT_ID_BANNER"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
 
   buildTypes {
@@ -84,4 +87,30 @@ dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
 
   compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') { transitive = true; }
+
+  testCompile 'junit:junit:4.12'
+  testCompile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
+  testCompile "org.jetbrains.kotlin:kotlin-test-junit:$deps.kotlin"
+  androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+  androidTestCompile 'com.jraska:falcon-spoon-compat:1.0.3'
+}
+
+// This section is optional
+spoon {
+  // for debug output
+  debug = true
+
+  // To run a single test class
+  //className = 'fully.qualified.TestCase'
+
+  // To run a single method in TestCase
+  //methodName = 'testMyApp'
+
+  // To execute the tests device by device */
+  //sequential = true
+
+  // To grant permissions to Android M >= devices */
+  grantAllPermissions = true
 }
