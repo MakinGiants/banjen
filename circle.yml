@@ -1,0 +1,34 @@
+machine:
+  environment:
+    PATH: "~/$CIRCLE_PROJECT_REPONAME/gradle-3.1/bin:$PATH"
+    TERM: "dumb"
+    ADB_INSTALL_TIMEOUT: "10"
+    GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
+
+dependencies:
+  pre:
+    - wget "https://services.gradle.org/distributions/gradle-3.1-bin.zip"; unzip gradle-3.1-bin.zip
+    - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-25
+    - echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
+
+test:
+  override:
+    # start the emulator
+    - mksdcard -l e 512M mysdcard.img # Screenshots
+
+    - emulator -avd circleci-android22 -no-audio -no-window -sdcard mysdcard.img:
+        background: true
+        parallel: true
+
+    # wait for it to have booted
+    - circle-android wait-for-boot
+    # unlock the emulator screen
+    - sleep 30
+    - adb shell input keyevent 82
+    # run tests  against the emulator.
+    - ./gradlew spoonDebugAndroidTest -PdisablePreDex
+    # copy the build outputs to artifacts
+    - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+    # copy the test results to the test results directory.
+    # - cp -r app/build/outputs/androidTest-results/* $CIRCLE_TEST_REPORTS
+    - cp -r app/build/spoon/* $CIRCLE_TEST_REPORTS
