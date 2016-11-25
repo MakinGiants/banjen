@@ -100,7 +100,9 @@ dependencies {
 // This section is optional
 spoon {
   // for debug output
-  debug = true
+  //debug = true
+
+  codeCoverage = true
 
   // To run a single test class
   //className = 'fully.qualified.TestCase'
