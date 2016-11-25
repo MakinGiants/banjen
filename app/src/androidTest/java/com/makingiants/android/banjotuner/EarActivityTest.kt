@@ -16,14 +16,14 @@ class EarActivityTest {
 
     @Test
     fun test_onClick_ifUnselected_playSound() {
-        test(mActivityRule.activity) {
+        withEarRobot(mActivityRule.activity) {
             click(1)
         }.isPlaying()
     }
 
     @Test
     fun test_onClick_ifSelected_stopSound() {
-        test(mActivityRule.activity) {
+        withEarRobot(mActivityRule.activity) {
             click(1)
             click(1)
         }.isNotPlaying()
