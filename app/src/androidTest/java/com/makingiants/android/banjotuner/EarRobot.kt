@@ -34,4 +34,4 @@ class EarRobot(val activity: Activity) {
 
 }
 
-fun test(activity: Activity, func: EarRobot.() -> Unit) = EarRobot(activity).apply { func() }
+fun withEarRobot(activity: Activity, func: EarRobot.() -> Unit) = EarRobot(activity).apply { func() }
