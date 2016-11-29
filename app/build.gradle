@@ -96,13 +96,16 @@ dependencies {
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  androidTestCompile 'com.jraska:falcon-spoon-compat:1.0.3'
+  androidTestCompile ('com.jraska:falcon-spoon-compat:1.0.3') {
+    exclude group: 'com.squareup.spoon', module: 'spoon-client'
+  }
+  androidTestCompile 'com.squareup.spoon:spoon-client:1.7.0'
 }
 
 // This section is optional
 spoon {
   // for debug output
-  //debug = true
+  debug = true
 
   codeCoverage = true
 
