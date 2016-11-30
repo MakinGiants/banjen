@@ -11,6 +11,7 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-25
     - echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
     - sh cp-env-to-properties.sh
+    - pip install --user codecov
 
 test:
   override:
@@ -21,7 +22,6 @@ test:
         background: true
         parallel: true
 
-    # wait for it to have booted
     - circle-android wait-for-boot
     # unlock the emulator screen
     - sleep 30
@@ -33,4 +33,4 @@ test:
     # copy the test results to the test results directory.
     - cp -r app/build/spoon/* $CIRCLE_TEST_REPORTS
   post:
-    - bash <(curl -s https://codecov.io/bash)
+    - codecov
