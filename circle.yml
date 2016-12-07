@@ -11,7 +11,6 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository,android-25
     - echo y | android update sdk --no-ui --all --filter build-tools-25.0.0
     - sh cp-env-to-properties.sh
-    - pip install --user codecov
 
 test:
   override:
@@ -33,4 +32,4 @@ test:
     # copy the test results to the test results directory.
     - cp -r app/build/spoon/* $CIRCLE_TEST_REPORTS
   post:
-    - codecov
+    - bash <(curl -s https://codecov.io/bash) -s "$CIRCLE_TEST_REPORTS"
