@@ -30,14 +30,14 @@ android {
   compileSdkVersion setup.targetSdk
   buildToolsVersion setup.buildTools
 
-//  signingConfigs {
-//    release {
-//      storeFile file(BANJEN_SIGN_PATH)
-//      storePassword BANJEN_SIGN_PWD
-//      keyAlias BANJEN_SIGN_ALIAS
-//      keyPassword BANJEN_SIGN_PWD
-//    }
-//  }
+  signingConfigs {
+    release {
+      storeFile file(BANJEN_SIGN_PATH)
+      storePassword BANJEN_SIGN_PWD
+      keyAlias BANJEN_SIGN_ALIAS
+      keyPassword BANJEN_SIGN_PWD
+    }
+  }
 
   defaultConfig {
     applicationId appId
@@ -67,7 +67,7 @@ android {
       shrinkResources true
       useProguard true
 
-//      signingConfig signingConfigs.release
+      signingConfig signingConfigs.release
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
@@ -81,8 +81,6 @@ android {
 repositories {
   maven { url 'https://maven.fabric.io/public' }
 }
-
-ext.jacocoV = "0.7.6.201602180812"
 
 dependencies {
   compile "com.android.support:appcompat-v7:${deps.supportLib}"
@@ -99,7 +97,7 @@ dependencies {
   androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  androidTestCompile ('com.jraska:falcon-spoon-compat:1.0.3') {
+  androidTestCompile('com.jraska:falcon-spoon-compat:1.0.3') {
     exclude group: 'com.squareup.spoon', module: 'spoon-client'
   }
   androidTestCompile 'com.squareup.spoon:spoon-client:1.7.0'
@@ -112,42 +110,13 @@ dependencies {
   }
 }
 
-//jacoco {
-//  toolVersion = "0.7.6.201602180812"
-  //reportsDir = file("$buildDir/customJacocoReportDir")
-//}
-//
-//test {
-//  jacocoTestReport {
-//    reports {
-//      xml.enabled true
-//      csv.enabled false
-//      //html.destination "${buildDir}/jacocoHtml"
-//    }
-//  }
-//}
-
 jacoco {
   toolVersion = "0.7.4.201502262128"
-//  reportsDir = file("$buildDir/customJacocoReportDir")
 }
 
-// This section is optional
 spoon {
-  // for debug output
   debug = true
-
   codeCoverage = true
-
-  // To run a single test class
-  //className = 'fully.qualified.TestCase'
-
-  // To run a single method in TestCase
-  //methodName = 'testMyApp'
-
-  // To execute the tests device by device */
-  //sequential = true
-
   // To grant permissions to Android M >= devices */
   grantAllPermissions = true
 }
