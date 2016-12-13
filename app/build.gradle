@@ -20,7 +20,7 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'io.fabric'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'spoon'
-apply plugin: 'jacoco'
+apply from: '../jacoco.gradle'
 
 def appId = "com.makingiants.android.banjotuner"
 def appVersionName = "1.4.2"
