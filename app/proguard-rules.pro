@@ -13,3 +13,5 @@
 
 # Kotlin
 -dontwarn kotlin.**
+
+-keep class org.jacoco.agent.**
