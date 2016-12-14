@@ -16,15 +16,10 @@ test:
     # start the emulator
     - mksdcard -l e 512M mysdcard.img # Screenshots
 
-    - emulator -avd circleci-android22 -no-audio -no-window -sdcard mysdcard.img:
+    - emulator -avd circleci-android23 -no-audio -no-window -sdcard mysdcard.img:
         background: true
         parallel: true
 
-    - emulator -avd circleci-android23 -no-audio -no-window -sdcard mysdcard.img:
-            background: true
-            parallel: true
-
-    - circle-android wait-for-boot
     - circle-android wait-for-boot
 
     # unlock the emulator screen
