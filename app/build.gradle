@@ -23,8 +23,8 @@ apply plugin: 'spoon'
 apply from: '../jacoco.gradle'
 
 def appId = "com.makingiants.android.banjotuner"
-def appVersionName = "1.4.2"
-def appVersionCode = 18
+def appVersionName = "1.4.3"
+def appVersionCode = 19
 
 android {
   compileSdkVersion setup.targetSdk
