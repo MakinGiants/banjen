@@ -1,3 +1,6 @@
+# 1.4.3
+- Update support library and other deps.
+
 # 1.4.2
 - Update Kotlin 1.0.5.
 - Update sdk, support library and children to 25.
