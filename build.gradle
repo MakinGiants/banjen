@@ -1,5 +1,5 @@
 buildscript {
-  ext.deps = [kotlin      : "1.0.5-2",
+  ext.deps = [kotlin      : "1.0.6",
               supportLib  : "25.1.0",
               playServices: "10.0.1"]
 
