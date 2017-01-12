@@ -4,7 +4,7 @@ buildscript {
               playServices: "10.0.1"]
 
   ext.setup = [targetSdk : 25,
-               minSdk    : 15,
+               minSdk    : 14,
                buildTools: "25.0.2"]
 
   repositories {
@@ -12,7 +12,7 @@ buildscript {
     maven { url "https://plugins.gradle.org/m2/" }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.2.3'
+    classpath 'com.android.tools.build:gradle:2.1.0'
     classpath "com.gradle:build-scan-plugin:1.3"
   }
 }
