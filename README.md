@@ -1,6 +1,7 @@
 # Android Banjo Tuner [Google Play](https://play.google.com/store/apps/details?id=com.makingiants.android.banjotuner)
-- master [![codecov](https://codecov.io/gh/MakinGiants/banjen/branch/master/graph/badge.svg)](https://codecov.io/gh/MakinGiants/banjen)
-- develop [![codecov](https://codecov.io/gh/MakinGiants/banjen/branch/develop/graph/badge.svg)](https://codecov.io/gh/MakinGiants/banjen)
+[![codecov](https://codecov.io/gh/MakinGiants/banjen/branch/master/graph/badge.svg)](https://codecov.io/gh/MakinGiants/banjen)
+[![codecov](https://codecov.io/gh/MakinGiants/banjen/branch/develop/graph/badge.svg)](https://codecov.io/gh/MakinGiants/banjen)
+[![codebeat badge](https://codebeat.co/badges/b1f343ee-4b9a-48a4-b41b-bb58cc5f949a)](https://codebeat.co/projects/github-com-makingiants-banjen)
 
 Android app to help to tune a 4 string banjo
 
