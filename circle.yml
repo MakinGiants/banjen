@@ -11,20 +11,27 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter android-25,build-tools-25.0.2,tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository
     - sh cp-env-to-properties.sh
 
-test:
-  override:
+compile:
+  pre:
     # start the emulator
-    - mksdcard -l e 512M mysdcard.img # Screenshots
-
+    - mksdcard -l e 512M mysdcard.img # Spoon screenshots
     - emulator -avd circleci-android22 -no-audio -no-window -sdcard mysdcard.img:
         background: true
         parallel: true
 
+  override:
+    - ./gradlew assembleDebug --stacktrace -PdisablePreDex --no-daemon --console=plain
+
+test:
+  override:
     - circle-android wait-for-boot
 
     # unlock the emulator screen
     - sleep 30
     - adb shell input keyevent 82
+    - adb shell input keyevent 4
+    - adb shell input keyevent 66
+    - adb shell input touchscreen swipe 370 735 371 735
 
     # run tests  against the emulator.
     - ./gradlew spoonDebugAndroidTest -PdisablePreDex --stacktrace
