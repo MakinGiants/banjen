@@ -6,6 +6,9 @@ machine:
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
 
 dependencies:
+  cache_directories:
+    - ~/.gradle
+    - ~/.android
   pre:
     - wget "https://services.gradle.org/distributions/gradle-2.14.1-bin.zip"; unzip gradle-2.14.1-bin.zip
     - echo y | android update sdk --no-ui --all --filter android-25,build-tools-25.0.2,tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository
