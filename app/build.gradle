@@ -33,14 +33,14 @@ android {
   compileSdkVersion setup.targetSdk
   buildToolsVersion setup.buildTools
 
-  //  signingConfigs {
-  //    release {
-  //      storeFile file(BANJEN_SIGN_PATH)
-  //      storePassword BANJEN_SIGN_PWD
-  //      keyAlias BANJEN_SIGN_ALIAS
-  //      keyPassword BANJEN_SIGN_PWD
-  //    }
-  //  }
+    signingConfigs {
+      release {
+        storeFile file(BANJEN_SIGN_PATH)
+        storePassword BANJEN_SIGN_PWD
+        keyAlias BANJEN_SIGN_ALIAS
+        keyPassword BANJEN_SIGN_PWD
+      }
+    }
 
   defaultConfig {
     applicationId appId
@@ -70,7 +70,7 @@ android {
       shrinkResources true
       useProguard true
 
-      //      signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }

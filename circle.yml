@@ -11,13 +11,13 @@ dependencies:
     - ~/.android
   pre:
     - wget "https://services.gradle.org/distributions/gradle-2.14.1-bin.zip"; unzip gradle-2.14.1-bin.zip
-    - echo y | android update sdk --no-ui --all --filter android-25,build-tools-25.0.2,tool,extra-android-m2repository,extra-android-support,extra-google-google_play_services,extra-google-m2repository
-    - sh cp-env-to-properties.sh
+    - sh scripts/install-deps.sh
+    - sh scripts/cp-env-to-properties.sh
 
 compile:
   pre:
     # start the emulator
-    - mksdcard -l e 512M mysdcard.img # Spoon screenshots
+    - mksdcard -l e 128M mysdcard.img # Spoon screenshots
     - emulator -avd circleci-android22 -no-audio -no-window -sdcard mysdcard.img:
         background: true
         parallel: true
@@ -32,8 +32,6 @@ test:
     # unlock the emulator screen
     - sleep 30
     - adb shell input keyevent 82
-    - adb shell input keyevent 4
-    - adb shell input keyevent 66
     - adb shell input touchscreen swipe 370 735 371 735
 
     # run tests  against the emulator.
