@@ -1,4 +1,8 @@
 
+# 1.4.5
+- Update support library 25.1.1.
+- Crashlytics and fabric.
+
 # 1.4.4
 - Update
 
