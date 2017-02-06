@@ -1,6 +1,7 @@
 machine:
   environment:
-    PATH: "~/$CIRCLE_PROJECT_REPONAME/gradle-2.14.1/bin:$PATH"
+    GRADLE_VERSION: "gradle-2.13"
+    PATH: "~/$CIRCLE_PROJECT_REPONAME/$GRADLE_VERSION/bin:$PATH"
     TERM: "dumb"
     ADB_INSTALL_TIMEOUT: "10"
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
@@ -10,15 +11,16 @@ dependencies:
     - ~/.gradle
     - ~/.android
   pre:
-    - wget "https://services.gradle.org/distributions/gradle-2.14.1-bin.zip"; unzip gradle-2.14.1-bin.zip
-    
+    - wget "https://services.gradle.org/distributions/$GRADLE_VERSION-bin.zip"; unzip $GRADLE_VERSION-bin.zip
     - sh scripts/install-deps.sh
     - sh scripts/cp-env-to-properties.sh
+    - sh cp-env-to-properties.sh
 
 compile:
   pre:
     # start the emulator
     - mksdcard -l e 128M mysdcard.img # Spoon screenshots
+
     - emulator -avd circleci-android22 -no-audio -no-window -sdcard mysdcard.img:
         background: true
         parallel: true
@@ -48,6 +50,6 @@ test:
 
 deployment:
   staging:
-    branch: /^release.*$/
+    branch: /^release\$*/
     commands:
       - ./gradlew ndUpload -PdisablePreDex #upload to nimbledroid
