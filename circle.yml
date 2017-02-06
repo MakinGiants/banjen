@@ -14,7 +14,6 @@ dependencies:
     - wget "https://services.gradle.org/distributions/$GRADLE_VERSION-bin.zip"; unzip $GRADLE_VERSION-bin.zip
     - sh scripts/install-deps.sh
     - sh scripts/cp-env-to-properties.sh
-    - sh cp-env-to-properties.sh
 
 compile:
   pre:
