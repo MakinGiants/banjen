@@ -26,8 +26,8 @@ apply from: '../jacoco.gradle'
 apply plugin: 'com.nimbledroid.profiler'
 
 def appId = "com.makingiants.android.banjotuner"
-def appVersionName = "1.4.4"
-def appVersionCode = 20
+def appVersionName = "1.4.5"
+def appVersionCode = 21
 
 android {
   compileSdkVersion setup.targetSdk
