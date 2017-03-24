@@ -1,21 +1,3 @@
-buildscript {
-  repositories {
-    jcenter() // gradle-versions-plugin
-    mavenCentral()
-    maven { url 'https://maven.fabric.io/public' }
-    maven { url 'https://plugins.gradle.org/m2/' } //nimbledroid
-  }
-
-  dependencies {
-    classpath 'io.fabric.tools:gradle:1.22.1'
-    classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$deps.kotlin"
-    classpath "org.jetbrains.kotlin:kotlin-android-extensions:$deps.kotlin"
-    classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
-    classpath 'gradle.plugin.com.nimbledroid:gradle-profiler:1.1.0'
-  }
-}
-
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -71,17 +53,13 @@ android {
   }
 }
 
-repositories {
-  maven { url 'https://maven.fabric.io/public' }
-}
-
 dependencies {
   compile "com.android.support:appcompat-v7:${deps.supportLib}"
   compile "com.google.android.gms:play-services-ads:${deps.playServices}"
 
   compile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
 
-  compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') { transitive = true; }
+  compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') { transitive = true; }
 
   testCompile 'junit:junit:4.12'
   testCompile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
@@ -116,5 +94,5 @@ spoon {
 
 nimbledroid {
   apiKey BANJEN_NIMBLEDROID_API_KEY
-  apkFilename 'app/build/outputs/apk/app-release.apk'
+  apkFilename 'app/build/outputs/apk/app-debug.apk'
 }
