@@ -1,7 +1,7 @@
 buildscript {
-  ext.deps = [kotlin      : "1.0.6",
-              supportLib  : "25.1.1",
-              playServices: "10.0.1"]
+  ext.deps = [kotlin      : "1.1.1",
+              supportLib  : "25.3.0",
+              playServices: "10.2.1"]
 
   ext.setup = [targetSdk : 25,
                minSdk    : 14,
@@ -9,20 +9,33 @@ buildscript {
 
   repositories {
     jcenter()
-    maven { url "https://plugins.gradle.org/m2/" }
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://plugins.gradle.org/m2/' } //nimbledroid
   }
+
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.1.0'
+    classpath 'com.android.tools.build:gradle:2.3.0'
+
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$deps.kotlin"
+    classpath "org.jetbrains.kotlin:kotlin-android-extensions:$deps.kotlin"
+
+    classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
+
     classpath "com.gradle:build-scan-plugin:1.3"
+    classpath 'io.fabric.tools:gradle:1.22.1'
+
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
+    classpath 'gradle.plugin.com.nimbledroid:gradle-profiler:1.1.0'
   }
 }
 
 allprojects {
   repositories {
     jcenter()
+    maven { url 'https://maven.fabric.io/public' }
   }
 }
-
 
 apply plugin: "com.gradle.build-scan"
 buildScan {
