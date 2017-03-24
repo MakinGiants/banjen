@@ -1,4 +1,4 @@
-<com.makingiants.android.banjotuner.TouchDrawLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:ads="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/mainLayout"
@@ -10,7 +10,6 @@
     android:id="@+id/soundsRadioGroup"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_centerInParent="true"
     android:orientation="vertical">
 
     <ToggleButton
@@ -59,8 +58,8 @@
     android:id="@+id/adsView"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
     ads:adSize="BANNER"
     ads:adUnitId="@string/ads_unit_id_banner" />
 
-</com.makingiants.android.banjotuner.TouchDrawLayout>
+</FrameLayout>
