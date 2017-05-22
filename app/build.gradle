@@ -5,7 +5,6 @@ apply plugin: 'io.fabric'
 apply plugin: 'com.github.ben-manes.versions'
 apply plugin: 'spoon'
 apply from: '../jacoco.gradle'
-apply plugin: 'com.nimbledroid.profiler'
 
 def appId = "com.makingiants.android.banjotuner"
 def appVersionName = "1.4.5"
@@ -90,9 +89,4 @@ spoon {
   codeCoverage = true
   // To grant permissions to Android M >= devices */
   grantAllPermissions = true
-}
-
-nimbledroid {
-  apiKey BANJEN_NIMBLEDROID_API_KEY
-  apkFilename 'app/build/outputs/apk/app-debug.apk'
 }
