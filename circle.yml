@@ -25,7 +25,7 @@ compile:
         parallel: true
 
   override:
-    - ./gradlew assembleDebug --stacktrace -PdisablePreDex --no-daemon --console=plain
+    - ./gradlew assembleDebug --stacktrace -PdisablePreDex --no-daemon --console=plain -scan
 
 test:
   override:
