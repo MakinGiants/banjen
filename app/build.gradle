@@ -58,7 +58,7 @@ dependencies {
 
   compile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
 
-  compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') { transitive = true; }
+  compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') { transitive = true; }
 
   testCompile 'junit:junit:4.12'
   testCompile "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
