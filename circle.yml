@@ -46,9 +46,3 @@ test:
     - cp -r app/build/spoon/* $CIRCLE_TEST_REPORTS
   post:
     - bash <(curl -s https://codecov.io/bash) -s "$CIRCLE_TEST_REPORTS"
-
-deployment:
-  staging:
-    branch: /^release\$*/
-    commands:
-      - ./gradlew ndUpload -PdisablePreDex #upload to nimbledroid
