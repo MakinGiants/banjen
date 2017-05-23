@@ -13,7 +13,6 @@ buildscript {
     maven { url 'https://maven.fabric.io/public' }
     maven { url "https://plugins.gradle.org/m2/" } //gradle scan
   }
-
   dependencies {
     classpath 'com.android.tools.build:gradle:2.3.2'
 
@@ -32,9 +31,9 @@ buildscript {
 allprojects {
   repositories {
     jcenter()
-    maven { url 'https://maven.fabric.io/public' }
   }
 }
+
 
 apply plugin: "com.gradle.build-scan"
 buildScan {

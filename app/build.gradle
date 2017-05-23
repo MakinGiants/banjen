@@ -1,3 +1,21 @@
+buildscript {
+  repositories {
+    jcenter() // gradle-versions-plugin
+    mavenCentral()
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://plugins.gradle.org/m2/' } //nimbledroid
+  }
+
+  dependencies {
+    classpath 'io.fabric.tools:gradle:1.22.1'
+    classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$deps.kotlin"
+    classpath "org.jetbrains.kotlin:kotlin-android-extensions:$deps.kotlin"
+    classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
+    classpath 'gradle.plugin.com.nimbledroid:gradle-profiler:1.1.0'
+  }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
