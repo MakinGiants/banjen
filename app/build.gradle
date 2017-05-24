@@ -96,9 +96,9 @@ dependencies {
   }
 }
 
-//jacoco {
-//  toolVersion = "0.7.4.201502262128"
-//}
+jacoco {
+  toolVersion = "0.7.4.201502262128"
+}
 
 spoon {
   debug = true
