@@ -1,6 +1,6 @@
 machine:
   environment:
-    GRADLE_VERSION: "gradle-3.5"
+    GRADLE_VERSION: "gradle-3.3"
     PATH: "~/$CIRCLE_PROJECT_REPONAME/$GRADLE_VERSION/bin:$PATH"
     TERM: "dumb"
     ADB_INSTALL_TIMEOUT: "10"
