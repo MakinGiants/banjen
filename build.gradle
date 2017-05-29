@@ -1,7 +1,8 @@
 buildscript {
   ext.deps = [kotlin      : "1.1.2-3",
               supportLib  : "25.3.1",
-              playServices: "10.2.6"]
+              playServices: "10.2.6",
+              jacoco: "0.7.9"]
 
   ext.setup = [targetSdk : 25,
                minSdk    : 14,
@@ -14,7 +15,7 @@ buildscript {
     maven { url "https://plugins.gradle.org/m2/" } //gradle scan
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.3.2'
+    classpath 'com.android.tools.build:gradle:2.1.0' //2.2.3 and 2.3.0+ breaks jacoco support
 
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$deps.kotlin"
     classpath "org.jetbrains.kotlin:kotlin-android-extensions:$deps.kotlin"
