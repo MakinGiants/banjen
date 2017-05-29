@@ -13,7 +13,6 @@ buildscript {
     jcenter()
     mavenCentral()
     maven { url 'https://maven.fabric.io/public' }
-    maven { url "https://plugins.gradle.org/m2/" } //gradle scan
   }
   dependencies {
     classpath 'com.android.tools.build:gradle:2.1.0' //2.2.3 and 2.3.0+ breaks jacoco support
@@ -25,7 +24,6 @@ buildscript {
 
     classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
 
-    classpath "com.gradle:build-scan-plugin:1.7.3"
     classpath 'io.fabric.tools:gradle:1.22.1'
 
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
@@ -37,11 +35,4 @@ allprojects {
     jcenter()
     maven { url 'https://maven.fabric.io/public' } // Crashlytics
   }
-}
-
-
-apply plugin: "com.gradle.build-scan"
-buildScan {
-  licenseAgreementUrl = 'https://gradle.com/terms-of-service'
-  licenseAgree = 'yes'
 }
