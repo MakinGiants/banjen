@@ -7,10 +7,7 @@ machine:
 
     # Avoid out of memory error
     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
-    _JAVA_OPTIONS: "-Xms512m -Xmx1024m" # some libraries ignore the gradle opts
-
-  java:
-    version: oraclejdk8
+    _JAVA_OPTIONS: "-Xms512m -Xmx2048m" # some libraries ignore the gradle opts
 
 dependencies:
   cache_directories:
