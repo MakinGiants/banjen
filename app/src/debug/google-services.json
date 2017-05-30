@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "345014694643",
+    "firebase_url": "https://banjen-android-staging.firebaseio.com",
+    "project_id": "banjen-android-staging",
+    "storage_bucket": "banjen-android-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345014694643:android:864a4f6704c2ae3e",
+        "android_client_info": {
+          "package_name": "com.makingiants.android.banjotuner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345014694643-cm4s0v1kb81agmga61hlou1thsa8ac6v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtevdzggMH3aLAHTIpSzJuUWbzWhrQlVQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
